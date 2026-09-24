@@ -1,0 +1,62 @@
+[
+  {
+    "id": "p1",
+    "title": "BusKarro Bus Reservation System",
+    "description": "A scalable Django and DRF backend with custom JWT authentication, REST APIs, and email based ticket confirmation. Includes admin and user dashboards with real time ticketing, deployed on Render with a dark and light mode toggle.",
+    "tech": ["Django", "DRF", "JWT", "PostgreSQL"],
+    "link": "",
+    "github": "https://github.com/senku0-0/Buskarro.git",
+    "blog": "",
+    "media": null
+  },
+  {
+    "id": "p2",
+    "title": "Talking Meow Chat App",
+    "description": "A Django based real time chat system with secure sessions, dynamic message rendering, and a responsive interface. Integrated Redis and a WebSocket ready backend with session middleware, deployed on Render.",
+    "tech": ["Django", "Redis", "WebSockets", "JavaScript"],
+    "link": "",
+    "github": "https://github.com/senku0-0/RPS.git",
+    "blog": "",
+    "media": null
+  },
+  {
+    "id": "p3",
+    "title": "Yatri Bandhu Custom Bot",
+    "description": "A custom chatbot built with Python and API integrations for real time communication and automated ticket handling. Implements AI driven workflows with triggers, webhooks, and escalation logic to streamline support.",
+    "tech": ["Python", "APIs", "Automation"],
+    "link": "",
+    "github": "",
+    "blog": "",
+    "media": null
+  },
+  {
+    "id": "p4",
+    "title": "YouTube UI Clone",
+    "description": "A responsive frontend clone of the YouTube interface, focused on layout accuracy and clean component structure.",
+    "tech": ["HTML", "CSS", "JavaScript"],
+    "link": "",
+    "github": "https://github.com/senku0-0/Youtube-Ui",
+    "blog": "",
+    "media": null
+  },
+  {
+    "id": "p5",
+    "title": "Vehicle Insurance MLOps Pipeline",
+    "description": "An end to end MLOps pipeline for a vehicle insurance prediction model, covering data ingestion, training, and deployment steps.",
+    "tech": ["Python", "MLOps"],
+    "link": "",
+    "github": "https://github.com/senku0-0/MLOPS-Vehicle-insurance-domain",
+    "blog": "",
+    "media": null
+  },
+  {
+    "id": "p6",
+    "title": "Diabetes Prediction Model",
+    "description": "A machine learning model trained to predict diabetes risk from patient health data.",
+    "tech": ["Python", "Machine Learning"],
+    "link": "",
+    "github": "https://github.com/senku0-0/Diabetes_prediction_model",
+    "blog": "",
+    "media": null
+  }
+]

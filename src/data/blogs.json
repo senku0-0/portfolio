@@ -1,0 +1,37 @@
+[
+  {
+    "id": "b1",
+    "title": "Why I Automate Everything I Can",
+    "description": "Some thoughts on building workflow automations and what I learned shipping them for clients.",
+    "date": "2026-01-15",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "content": "Automation changes the way I work because it reduces repetitive effort and gives me more time to focus on decisions that actually move projects forward.\n\nWhen a task repeats often enough, it becomes a candidate for automation. The goal is not to remove human judgment, but to remove the mechanical work that slows us down."
+      },
+      {
+        "id": "process",
+        "title": "Process",
+        "content": "I start by mapping the workflow and identifying which steps are repetitive, fragile, or easy to forget. Once those steps are clear, I look for a small automation that removes friction without making the system harder to understand.\n\nThis usually means writing a few reliable rules, connecting APIs carefully, and keeping a human review point where the outcome matters most."
+      },
+      {
+        "id": "lessons",
+        "title": "Lessons",
+        "content": "The biggest lesson is that automation works best when it is boring, visible, and easy to change. If the system is difficult to explain, it will be difficult to trust.\n\nGood automation is not about doing more with less; it is about doing the right things with fewer interruptions and less risk of error."
+      }
+    ],
+    "tabs": [
+      {
+        "id": "notes",
+        "title": "Notes",
+        "content": "A quick idea log for this post.\n\nThis content is separate from the main article outline and can be used for practical reminders or supporting references."
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "content": "Suggested references and tools.\n\nYou can include checklists, links, or short supporting details here without them becoming part of the main article structure."
+      }
+    ]
+  }
+]
