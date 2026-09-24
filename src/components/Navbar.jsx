@@ -17,7 +17,7 @@ export default function Navbar({ theme, onToggleTheme }) {
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <a href="#blog">Blog</a>
-        <a href="/resume.pdf" download className="btn btn-outline navbar-resume">
+        <a href="resume.pdf" download className="btn btn-outline navbar-resume">
           <DownloadIcon />
           Resume
         </a>

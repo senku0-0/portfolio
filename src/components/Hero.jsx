@@ -31,7 +31,7 @@ export default function Hero() {
 
         <div className="hero-visual" aria-label="Profile image placeholder">
           <div className="hero-photo-placeholder">
-            <img src="/1752945100839.jpg" alt="Ashad Shaikh" />
+            <img src="1752945100839.jpg" alt="Ashad Shaikh" />
           </div>
         </div>
       </div>
