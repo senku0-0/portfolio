@@ -106,11 +106,11 @@ export default function App() {
   }, [isBlog]);
 
   return (
-    <div className="app">
+    <div className={`app${isBlog ? " blog-app" : ""}`}>
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
 
       {isBlog ? (
-        <main className="blog-main">
+        <main className={`blog-main${isBlogPost ? " blog-main-post" : ""}`}>
           {isBlogPost ? (
             <BlogPost postId={hash.replace("#blog/", "")} />
           ) : (

@@ -1,19 +1,12 @@
 import { useMemo, useState } from "react";
 import blogs from "../data/blogs.json";
 
-function splitParagraphs(content = "") {
-  return content
-    .split(/\n\s*\n/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean);
-}
-
 function normalizeSections(post) {
   if (Array.isArray(post?.sections) && post.sections.length > 0) {
     return post.sections.map((section, index) => ({
       id: section.id || `section-${index + 1}`,
       title: section.title || `Section ${index + 1}`,
-      paragraphs: splitParagraphs(section.content || ""),
+      content: section.content || "",
     }));
   }
 
@@ -21,7 +14,7 @@ function normalizeSections(post) {
     {
       id: "overview",
       title: "Overview",
-      paragraphs: splitParagraphs(post?.content || ""),
+      content: post?.content || "",
     },
   ];
 }
@@ -34,14 +27,16 @@ function normalizeTabs(post) {
   return post.tabs.map((tab, index) => ({
     id: tab.id || `tab-${index + 1}`,
     title: tab.title || `Tab ${index + 1}`,
-    content: splitParagraphs(tab.content || ""),
+    description: tab.description || "",
+    articleTitle: tab.articleTitle || tab.title || `Tab ${index + 1}`,
+    date: tab.date || post.date,
+    sections: Array.isArray(tab.sections) ? normalizeSections(tab) : null,
   }));
 }
 
 export default function BlogPost({ postId }) {
   const post = blogs.find((p) => p.id === postId);
 
-  const sections = useMemo(() => normalizeSections(post), [post]);
   const tabs = useMemo(() => normalizeTabs(post), [post]);
   const [activeSection, setActiveSection] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
@@ -57,23 +52,35 @@ export default function BlogPost({ postId }) {
     );
   }
 
-  const activeContent = sections[activeSection] || sections[0];
-  const activeTabContent = tabs[activeTab] || tabs[0];
+  const activeTabContent = tabs[activeTab];
+  const sections = activeTabContent?.sections || normalizeSections(post);
+  const articleTitle = activeTabContent?.articleTitle || post.title;
+  const articleDate = activeTabContent?.date || post.date;
 
   const handleSectionClick = (index) => {
     setActiveSection(index);
 
     const section = document.getElementById(sections[index]?.id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    const article = document.querySelector(".blog-post");
+    if (section && article) {
+      const top = section.offsetTop - article.offsetTop - 16;
+      article.scrollTo({ top, behavior: "smooth" });
     }
+  };
+
+  const handleTabClick = (index) => {
+    setActiveTab(index);
+    setActiveSection(0);
+
+    const article = document.querySelector(".blog-post");
+    if (article) article.scrollTo({ top: 0, behavior: "auto" });
   };
 
   return (
     <div className="blog-page blog-post-page">
       <a href="#blog" className="back-link">Back to blog</a>
 
-      <div className="blog-layout">
+      <div className={`blog-layout${hasTabs ? "" : " blog-layout-no-tabs"}`}>
         {hasTabs && (
           <aside className="blog-side blog-side-left">
             <div className="blog-tab-panel">
@@ -82,29 +89,23 @@ export default function BlogPost({ postId }) {
                   <button
                     key={tab.id}
                     type="button"
+                    title={tab.description || undefined}
                     className={index === activeTab ? "active" : ""}
-                    onClick={() => setActiveTab(index)}
+                    onClick={() => handleTabClick(index)}
                   >
                     {tab.title}
                   </button>
                 ))}
               </div>
 
-              {activeTabContent && (
-                <div className="blog-tab-content">
-                  {activeTabContent.content.map((paragraph, index) => (
-                    <p key={`${activeTabContent.id}-${index}`}>{paragraph}</p>
-                  ))}
-                </div>
-              )}
             </div>
           </aside>
         )}
 
         <article className="blog-post">
           <header className="blog-post-header">
-            <h1>{post.title}</h1>
-            <span className="blog-date">{post.date}</span>
+            <h1>{articleTitle}</h1>
+            <span className="blog-date">{articleDate}</span>
           </header>
 
           {sections.map((section, index) => (
@@ -114,9 +115,7 @@ export default function BlogPost({ postId }) {
               className={index === activeSection ? "blog-section active" : "blog-section"}
             >
               <h2>{section.title}</h2>
-              {section.paragraphs.map((paragraph, paragraphIndex) => (
-                <p key={`${section.id}-${paragraphIndex}`}>{paragraph}</p>
-              ))}
+              <div dangerouslySetInnerHTML={{ __html: section.content }} />
             </section>
           ))}
         </article>

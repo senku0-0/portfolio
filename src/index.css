@@ -43,6 +43,11 @@ ul { margin: 0; padding-left: 1.2rem; }
 h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
 
 .app { height: 100vh; display: flex; flex-direction: column; }
+.blog-app {
+  height: 100vh;
+  min-height: 0;
+  overflow: hidden;
+}
 
 /* ---------- Navbar ---------- */
 .navbar {
@@ -55,6 +60,13 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
   background: var(--bg-elevated);
   flex-shrink: 0;
   z-index: 30;
+}
+.blog-app .navbar {
+  position: sticky;
+  top: 0;
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 .navbar-brand-wrap {
   display: inline-flex;
@@ -821,7 +833,13 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
 .contact-cta:hover { color: var(--accent); gap: 0.85rem; }
 
 /* ---------- Blog full page ---------- */
-.blog-main { flex: 1; overflow-y: auto; }
+.blog-main {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scroll-padding-top: 1.5rem;
+}
+.blog-main-post { overflow: hidden; }
 .blog-page { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
 .blog-header-row {
   display: flex;
@@ -880,12 +898,22 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
 .blog-card p { color: var(--text-muted); margin: 0 0 0.6rem; font-size: 0.92rem; }
 .blog-date { font-size: 0.8rem; color: var(--text-muted); }
 
-.blog-post-page { padding-top: 2rem; }
+.blog-post-page {
+  height: 100%;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
 .blog-layout {
+  flex: 1;
+  min-height: 0;
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr) 220px;
   gap: 1.5rem;
   align-items: start;
+}
+.blog-layout-no-tabs {
+  grid-template-columns: minmax(0, 1fr) 220px;
 }
 .blog-side {
   position: sticky;
@@ -943,6 +971,15 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
   line-height: 1.7;
 }
 .blog-tab-content p:last-child { margin-bottom: 0; }
+.blog-tab-content h3,
+.blog-tab-content h4,
+.blog-rich-list,
+.blog-tab-content pre { margin: 0 0 0.85rem; }
+.blog-tab-content h3,
+.blog-tab-content h4 {
+  color: var(--text);
+  font-size: 0.95rem;
+}
 .blog-toc {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -967,12 +1004,18 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
 .blog-toc li { margin: 0; }
 .blog-post {
   min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-elevated);
   padding: 1.75rem;
   box-shadow: var(--shadow);
 }
+.blog-post::-webkit-scrollbar { display: none; }
 .blog-post-header { margin-bottom: 1rem; }
 .blog-post h1 { margin: 0 0 0.5rem; font-size: clamp(2rem, 4vw, 2.7rem); }
 .blog-post h2 {
@@ -986,6 +1029,285 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
   margin: 1rem 0;
   font-size: 1rem;
 }
+.blog-post .blog-checklist {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+.blog-post .blog-checklist li { margin: 0.7rem 0; }
+.blog-post .blog-checklist label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.blog-post .blog-checklist input {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.35rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.websocket-diagram {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--chip-bg);
+}
+.websocket-node {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  background: var(--bg-elevated);
+  text-align: center;
+}
+.websocket-node strong { color: var(--text); }
+.websocket-node span,
+.websocket-arrow span,
+.websocket-loop span {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+.websocket-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  color: var(--accent);
+  font-size: 1.5rem;
+  transform: rotate(90deg);
+}
+.websocket-loop {
+  grid-column: 1;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.7rem;
+  border-top: 1px dashed var(--accent);
+  border-bottom: 1px dashed var(--accent);
+  text-align: center;
+}
+.websocket-message {
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.websocket-message-client { background: color-mix(in srgb, var(--accent) 18%, transparent); }
+.websocket-message-server { background: color-mix(in srgb, var(--accent) 30%, transparent); }
+.websocket-message-client,
+.websocket-message-server { grid-column: 1; }
+.ml-flow-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--chip-bg);
+  overflow: hidden;
+}
+.ml-flow-step {
+  flex: 0 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.7rem 0.45rem;
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  background: var(--bg-elevated);
+  text-align: center;
+}
+.ml-flow-step strong { color: var(--accent); }
+.ml-flow-step span { color: var(--text-muted); font-size: 0.72rem; }
+.ml-flow-arrow {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 1.25rem;
+  transform: rotate(90deg);
+}
+.docker-flow-diagram,
+.cloud-flow-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--chip-bg);
+  overflow: hidden;
+}
+.docker-flow-step,
+.cloud-flow-step {
+  flex: 0 0 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.8rem 0.5rem;
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  background: var(--bg-elevated);
+  text-align: center;
+}
+.docker-flow-step span,
+.cloud-flow-step span {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+.docker-flow-arrow,
+.cloud-flow-arrow {
+  color: var(--accent);
+  font-size: 1.25rem;
+  transform: rotate(90deg);
+}
+.jwt-diagram,
+.jwt-flow-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--chip-bg);
+  overflow: hidden;
+}
+.jwt-part,
+.jwt-flow-step {
+  width: min(100%, 280px);
+  min-height: 90px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 0.5rem;
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  background: var(--bg-elevated);
+  text-align: center;
+}
+.jwt-part-payload { min-height: 150px; }
+.jwt-part span,
+.jwt-flow-step span {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+.jwt-plus,
+.jwt-flow-arrow {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 1.25rem;
+  transform: rotate(90deg);
+}
+.jwt-result {
+  padding-top: 0.6rem;
+  color: var(--text-muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.jwt-storage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.jwt-storage-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--chip-bg);
+}
+.jwt-storage-card strong { color: var(--text); }
+.jwt-storage-card span {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.blog-post h3,
+.blog-post h4 {
+  color: var(--text);
+  margin: 1.5rem 0 0.65rem;
+}
+.blog-post h3 { font-size: 1.1rem; }
+.blog-post h4 { font-size: 1rem; }
+.blog-post code,
+.blog-tab-content code {
+  padding: 0.1rem 0.35rem;
+  border-radius: 5px;
+  background: var(--chip-bg);
+  color: var(--text);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.88em;
+}
+.blog-post pre,
+.blog-tab-content pre {
+  overflow-x: auto;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--chip-bg);
+}
+.blog-post pre code,
+.blog-tab-content pre code {
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+.blog-post pre code,
+.blog-tab-content pre code {
+  padding: 0;
+  background: transparent;
+  white-space: pre;
+}
+.blog-rich-list {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.blog-rich-list li { margin: 0.45rem 0; }
+.blog-checklist-item { list-style: none; margin-left: -1.2rem !important; }
+.blog-checklist-item label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  cursor: pointer;
+}
+.blog-checklist-item input {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.35rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.blog-checklist-item .is-checked {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
 .blog-section {
   scroll-margin-top: 5rem;
   padding-top: 0.5rem;
@@ -996,9 +1318,24 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
 @media (max-width: 960px) {
   .blog-layout {
     grid-template-columns: 1fr;
+    overflow-y: auto;
   }
   .blog-side {
     position: static;
+  }
+  .blog-side-left .blog-tab-panel,
+  .blog-side-right .blog-toc {
+    position: static;
+  }
+  .blog-post-page {
+    height: auto;
+  }
+  .blog-layout {
+    flex: none;
+  }
+  .blog-post {
+    height: auto;
+    overflow: visible;
   }
   .blog-tab-buttons {
     flex-direction: row;
@@ -1007,6 +1344,30 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
   .blog-side-left,
   .blog-side-right {
     padding-top: 0;
+  }
+  .websocket-diagram {
+    grid-template-columns: 1fr;
+  }
+  .websocket-arrow,
+  .websocket-loop,
+  .websocket-message-client,
+  .websocket-message-server {
+    grid-column: 1;
+  }
+  .websocket-node {
+    width: min(100%, 240px);
+    justify-self: center;
+  }
+  .websocket-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+  .websocket-loop {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .jwt-storage-grid {
+    grid-template-columns: 1fr;
   }
 }
 

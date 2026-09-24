@@ -8,64 +8,953 @@
       {
         "id": "overview",
         "title": "Overview",
-        "content": "Automation changes the way I work because it reduces repetitive effort and gives me more time to focus on decisions that actually move projects forward.\n\nWhen a task repeats often enough, it becomes a candidate for automation. The goal is not to remove human judgment, but to remove the mechanical work that slows us down."
+        "content": "<p>Automation changes the way I work because it reduces repetitive effort and gives me more time to focus on decisions that actually move projects forward.</p><p>When a task repeats often enough, it becomes a candidate for automation. The goal is not to remove human judgment, but to remove the mechanical work that slows us down.</p>"
       },
       {
         "id": "process",
         "title": "Process",
-        "content": "I start by mapping the workflow and identifying which steps are repetitive, fragile, or easy to forget. Once those steps are clear, I look for a small automation that removes friction without making the system harder to understand.\n\nThis usually means writing a few reliable rules, connecting APIs carefully, and keeping a human review point where the outcome matters most."
+        "content": "<p>I start by mapping the workflow and identifying which steps are repetitive, fragile, or easy to forget. Once those steps are clear, I look for a small automation that removes friction without making the system harder to understand.</p><p>This usually means writing a few reliable rules, connecting APIs carefully, and keeping a human review point where the outcome matters most.</p>"
       },
       {
         "id": "lessons",
         "title": "Lessons",
-        "content": "The biggest lesson is that automation works best when it is boring, visible, and easy to change. If the system is difficult to explain, it will be difficult to trust.\n\nGood automation is not about doing more with less; it is about doing the right things with fewer interruptions and less risk of error."
+        "content": "<p>The biggest lesson is that automation works best when it is boring, visible, and easy to change. If the system is difficult to explain, it will be difficult to trust.</p><p>Good automation is not about doing more with less; it is about doing the right things with fewer interruptions and less risk of error.</p>"
       }
     ],
     "tabs": [
       {
         "id": "notes",
         "title": "Notes",
-        "content": "A quick idea log for this post.\n\nThis content is separate from the main article outline and can be used for practical reminders or supporting references."
+        "description": "A short alternate view with practical notes about the topic.",
+        "articleTitle": "Automation Notes",
+        "sections": [
+          {
+            "id": "note-one",
+            "title": "Working Notes",
+            "content": "<p>Start with the smallest repeated task and make the result visible to the people using it.</p><p>Keep a manual fallback until the automated workflow has earned trust.</p>"
+          }
+        ]
       },
       {
         "id": "resources",
         "title": "Resources",
-        "content": "Suggested references and tools.\n\nYou can include checklists, links, or short supporting details here without them becoming part of the main article structure."
+        "description": "A separate reference view for links, tools, and further reading.",
+        "articleTitle": "Automation Resources",
+        "sections": [
+          {
+            "id": "resource-one",
+            "title": "Useful Resources",
+            "content": "<ul><li>Workflow maps for understanding repeated tasks.</li><li>API documentation for reliable integrations.</li><li>Short runbooks for human fallback steps.</li></ul>"
+          }
+        ]
       }
     ]
   },
   {
     "id": "b2",
-    "title": "Deploying a Vite Portfolio to GitHub Pages",
-    "description": "A practical guide to running, building, and deploying this React portfolio with GitHub Pages.",
+    "title": "Deploying a Frontend App to GitHub Pages",
+    "description": "A practical guide to developing, building, and deploying a Vite frontend app with GitHub Pages.",
     "date": "2026-09-24",
     "sections": [
       {
         "id": "commands",
         "title": "The npm Commands",
-        "content": "npm run dev starts Vite's local development server. Use it while writing code because it provides fast hot reloads and lets you test the portfolio at a local URL. It is intended for development and is not the command that publishes the site.\n\nnpm run build creates the optimized production files in the dist folder. Use it to check that the app compiles successfully and to prepare the files that a hosting service will publish.\n\nnpm run preview serves the finished dist folder locally. Use it after npm run build when you want to test the production version before deploying it.\n\nnpm run deploy runs npm run build and then uses gh-pages to push dist to the gh-pages branch. This is the command that updates the live GitHub Pages site."
+        "content": "<p>Use the commands below at different stages of frontend development.</p><h3>Development</h3><pre><code>npm run dev</code></pre><p>Starts Vite's local development server with fast hot reloads. Use it while editing React, CSS, and JSON files. It is for local development and does not publish the site.</p><h3>Production build</h3><pre><code>npm run build</code></pre><p>Creates optimized production files in <code>dist/</code>. Use it to catch compile errors and prepare the frontend for hosting.</p><h3>Preview</h3><pre><code>npm run preview</code></pre><p>Serves the finished <code>dist/</code> folder locally so you can test the production build before publishing it.</p><h3>Deploy</h3><pre><code>npm run deploy</code></pre><p>Builds the app and publishes <code>dist/</code> to the <code>gh-pages</code> branch using <code>gh-pages</code>. This is the command that updates the live GitHub Pages site.</p>"
       },
       {
         "id": "github-pages",
         "title": "GitHub Pages Deployment",
-        "content": "Before deploying, make sure vite.config.js uses the repository base path, such as /portfolio/. Public assets should use relative paths like resume.pdf and certifications/example.jpg so they work under that base path.\n\nPush the source code to GitHub, then run npm run deploy. The gh-pages package publishes the generated dist folder to the gh-pages branch. In the repository settings, open Pages and choose Deploy from a branch, select gh-pages, and use the root folder.\n\nThe live URL is usually https://your-username.github.io/your-repository/. The first deployment can take a short time to become available."
+        "content": "<p>Before deploying any Vite frontend, complete this checklist:</p><ul class=\"blog-checklist\"><li><label><input type=\"checkbox\"> Set <code>base</code> to <code>/&lt;repository-name&gt;/</code> in <code>vite.config.js</code></label></li><li><label><input type=\"checkbox\"> Use relative paths for files inside <code>public/</code></label></li><li><label><input type=\"checkbox\"> Confirm image, font, PDF, and favicon filenames match their case</label></li><li><label><input type=\"checkbox\"> Run <code>npm run build</code> successfully</label></li><li><label><input type=\"checkbox\"> Run <code>npm run preview</code> and test the production output</label></li></ul><p>Push the source code to GitHub, then run <code>npm run deploy</code>. The <code>gh-pages</code> package publishes the generated <code>dist/</code> folder to the <code>gh-pages</code> branch.</p>"
       },
       {
         "id": "git-workflow",
         "title": "Updating the Site",
-        "content": "After making changes, run npm run build to catch production errors. Commit and push the source changes with git add ., git commit, and git push. Then run npm run deploy to publish the new dist output.\n\nThe normal update flow is: edit the site, test with npm run dev, verify with npm run build, push the source code, and deploy with npm run deploy."
+        "content": "<p>Use this repeatable workflow whenever you change the frontend:</p><ol><li>Edit the components, styles, assets, or data.</li><li>Test locally with <code>npm run dev</code>.</li><li>Verify the production output with <code>npm run build</code>.</li><li>Optionally test <code>dist/</code> with <code>npm run preview</code>.</li><li>Commit and push the source changes.</li><li>Publish the new build with <code>npm run deploy</code>.</li></ol>"
       }
     ],
     "tabs": [
       {
         "id": "quick-reference",
         "title": "Quick Reference",
-        "content": "npm run dev = local development server\n\nnpm run build = production build in dist\n\nnpm run preview = preview the production build locally\n\nnpm run deploy = build and publish dist to GitHub Pages"
+        "description": "A compact alternate article explaining what each frontend command does.",
+        "articleTitle": "Frontend Command Reference",
+        "sections": [
+          {
+            "id": "command-reference",
+            "title": "Command Reference",
+            "content": "<p><code>npm run dev</code> starts local development.</p><p><code>npm run build</code> creates production files.</p><p><code>npm run preview</code> tests the production build locally.</p><p><code>npm run deploy</code> publishes the build to GitHub Pages.</p>"
+          }
+        ]
       },
       {
         "id": "git-checklist",
         "title": "Git Checklist",
-        "content": "1. Commit and push source changes.\n\n2. Confirm the Vite base path matches the repository name.\n\n3. Run npm run deploy.\n\n4. Confirm GitHub Pages uses the gh-pages branch."
+        "description": "A separate article with a clickable publishing checklist.",
+        "articleTitle": "Frontend Publishing Checklist",
+        "sections": [
+          {
+            "id": "publish-checklist",
+            "title": "Publish Checklist",
+            "content": "<p>Complete these checks before publishing:</p><ul class=\"blog-checklist\"><li><label><input type=\"checkbox\"> Commit and push source changes</label></li><li><label><input type=\"checkbox\"> Confirm the Vite base path</label></li><li><label><input type=\"checkbox\"> Run <code>npm run deploy</code></label></li><li><label><input type=\"checkbox\"> Confirm GitHub Pages uses <code>gh-pages</code></label></li><li><label><input type=\"checkbox\"> Test navigation and assets on the live URL</label></li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "github-pages-flow",
+        "title": "GitHub Pages Deployment",
+        "description": "A general setup flow for publishing frontend projects with GitHub Pages.",
+        "articleTitle": "GitHub Pages Deployment Flow",
+        "sections": [
+          {
+            "id": "prepare-project",
+            "title": "Prepare the Project",
+            "content": "<p>GitHub Pages can host the production output of many frontend projects, including Vite, React, Vue, and static HTML applications.</p><p>Before starting, install Node.js, npm, and Git. Confirm the tools are available:</p><pre><code>node --version &amp;&amp; npm --version &amp;&amp; git --version</code></pre><ol><li>Confirm the project runs locally.</li><li>Set the correct repository base path for tools such as Vite.</li><li>Keep public assets in the expected folder and use paths that work under the repository URL.</li></ol>"
+          },
+          {
+            "id": "install-deploy-tools",
+            "title": "Install the Packages",
+            "content": "<p>Install the project dependencies first. For a Vite app, install the GitHub Pages publishing package as a development dependency:</p><pre><code>npm install &amp;&amp; npm install --save-dev gh-pages</code></pre><p>Add a deploy script to <code>package.json</code> so the production build and publishing happen together:</p><pre><code>\"deploy\": \"vite build &amp;&amp; gh-pages -d dist\"</code></pre>"
+          },
+          {
+            "id": "initialize-git",
+            "title": "Initialize Git",
+            "content": "<p>Create a repository on GitHub, then connect the local frontend project to it:</p><pre><code>git init<br>git add .<br>git commit -m \"Initial frontend commit\"<br>git branch -M main</code></pre><pre><code>git remote add origin https://github.com/your-username/your-repository.git<br>git push -u origin main</code></pre><p>Replace the remote URL with the repository you created. The source code belongs on the normal source branch, such as <code>main</code>.</p>"
+          },
+          {
+            "id": "publish-build",
+            "title": "Build and Deploy",
+            "content": "<p>Build the project and publish the generated output to a deployment branch:</p><pre><code>npm run dev &amp;&amp; npm run build &amp;&amp; npm run preview &amp;&amp; npm run deploy</code></pre><p>Use <code>npm run dev</code> while developing, <code>npm run build</code> to create production files, and <code>npm run preview</code> to inspect the production build locally. With <code>gh-pages</code>, <code>npm run deploy</code> pushes the contents of <code>dist/</code> to the <code>gh-pages</code> branch.</p>"
+          },
+          {
+            "id": "configure-pages",
+            "title": "Configure GitHub Pages",
+            "content": "<p>Open the GitHub repository and go to <strong>Settings</strong> &rarr; <strong>Pages</strong>. Under <strong>Build and deployment</strong>, select <strong>Deploy from a branch</strong>, choose <code>gh-pages</code>, and select <code>/ (root)</code>.</p><ul class=\"blog-checklist\"><li><label><input type=\"checkbox\"> Confirm the deployment branch is selected</label></li><li><label><input type=\"checkbox\"> Confirm the published folder is <code>/ (root)</code></label></li><li><label><input type=\"checkbox\"> Wait for the Pages deployment to finish</label></li><li><label><input type=\"checkbox\"> Open the live URL and test routes and assets</label></li></ul>"
+          },
+          {
+            "id": "visibility-and-updates",
+            "title": "Visibility and Updates",
+            "content": "<p>After GitHub finishes deploying, the Pages panel shows the public site URL. The usual address is:</p><pre><code>https://your-username.github.io/your-repository/</code></pre><p>For every later update, commit and push the source code, then publish a fresh production build:</p><pre><code>git add . &amp;&amp; git commit -m \"Update frontend\" &amp;&amp; git push &amp;&amp; npm run deploy</code></pre><p>Source changes update the repository, while <code>npm run deploy</code> updates the live site.</p>"
+          },
+          {
+            "id": "troubleshooting",
+            "title": "Troubleshooting",
+            "content": "<p>If the site is blank or assets are missing, check the deployment branch, the Vite base path, and the exact case of every public filename.</p><ul><li>Use a relative path for files inside <code>public/</code>.</li><li>Confirm the repository name matches the Vite <code>base</code> value.</li><li>Check that GitHub Pages is publishing <code>gh-pages</code>.</li><li>Hard refresh the live URL after a new deployment.</li></ul>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b3",
+    "title": "Backend and Frontend Development Explained",
+    "description": "A beginner-friendly guide to how modern web applications are built, from the browser to the server.",
+    "date": "2026-09-24",
+    "sections": [
+      {
+        "id": "web-development-overview",
+        "title": "Web Development",
+        "content": "<p>Web development is the process of building applications that run in a browser and communicate with servers. A complete product usually combines a frontend, a backend, a database, and deployment infrastructure.</p>"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "what-is-development",
+        "title": "What Is Development?",
+        "description": "A general overview of how frontend and backend parts work together.",
+        "articleTitle": "What Is Web Development?",
+        "sections": [
+          {
+            "id": "development-definition",
+            "title": "The Big Picture",
+            "content": "<p>Web development is the work of designing, building, testing, and maintaining websites and web applications. The browser displays the interface, while servers process data and business rules behind the scenes.</p><p>Developers also work with databases, APIs, authentication, testing, version control, and hosting.</p>"
+          },
+          {
+            "id": "how-parts-connect",
+            "title": "How the Parts Connect",
+            "content": "<p>A user interacts with the frontend. The frontend sends requests to backend APIs. The backend validates those requests, reads or updates the database, and returns a response for the frontend to display.</p><pre><code>Browser &rarr; Frontend &rarr; API &rarr; Backend &rarr; Database</code></pre>"
+          },
+          {
+            "id": "shared-tools",
+            "title": "Shared Tools",
+            "content": "<ul><li>Git and GitHub for version control.</li><li>HTTP and REST or GraphQL for communication.</li><li>JSON for exchanging structured data.</li><li>Testing tools for checking reliability.</li><li>Cloud hosting and CI/CD for deployment.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "backend",
+        "title": "Backend",
+        "description": "Learn what runs on the server, which languages are common, and what backend developers build.",
+        "articleTitle": "What Is Backend Development?",
+        "sections": [
+          {
+            "id": "backend-role",
+            "title": "The Backend Role",
+            "content": "<p>The backend is the server-side part of an application. It handles business logic, authentication, permissions, API requests, background jobs, validation, and communication with databases.</p><p>Users usually do not see backend code directly, but every login, search, payment, and saved record depends on it.</p>"
+          },
+          {
+            "id": "backend-languages",
+            "title": "Languages and Frameworks",
+            "content": "<ul><li><strong>Python:</strong> Django, FastAPI, and Flask.</li><li><strong>JavaScript or TypeScript:</strong> Node.js, Express, and NestJS.</li><li><strong>Java:</strong> Spring Boot and Jakarta services.</li><li><strong>C#:</strong> ASP.NET Core.</li><li><strong>PHP:</strong> Laravel and Symfony.</li><li><strong>Go:</strong> lightweight APIs and high-performance services.</li></ul>"
+          },
+          {
+            "id": "backend-data-security",
+            "title": "Data and Security",
+            "content": "<p>Backend applications commonly use PostgreSQL, MySQL, MongoDB, Redis, or SQLite. They also need secure password handling, authorization rules, input validation, rate limiting, logging, and protected environment variables.</p><p>A strong backend is reliable, testable, observable, and careful with user data.</p>"
+          }
+        ]
+      },
+      {
+        "id": "frontend",
+        "title": "Frontend",
+        "description": "Learn what runs in the browser, which languages are used, and how interfaces communicate with APIs.",
+        "articleTitle": "What Is Frontend Development?",
+        "sections": [
+          {
+            "id": "frontend-role",
+            "title": "The Frontend Role",
+            "content": "<p>The frontend is the part of an application that users see and interact with in the browser. It includes layouts, navigation, forms, buttons, animations, loading states, errors, and responsive behavior.</p><p>Frontend developers turn designs and product requirements into accessible, usable interfaces.</p>"
+          },
+          {
+            "id": "frontend-languages",
+            "title": "Languages and Frameworks",
+            "content": "<ul><li><strong>HTML:</strong> page structure and semantic content.</li><li><strong>CSS:</strong> layout, colors, responsive design, and animation.</li><li><strong>JavaScript:</strong> browser behavior and application logic.</li><li><strong>TypeScript:</strong> typed JavaScript for larger applications.</li><li><strong>React, Vue, and Angular:</strong> component-based UI frameworks.</li></ul>"
+          },
+          {
+            "id": "frontend-quality",
+            "title": "Quality and Communication",
+            "content": "<p>A good frontend should be fast, accessible, responsive, and understandable. It communicates with the backend through APIs, handles loading and error states, and keeps sensitive secrets out of browser code.</p><p>Frontend tools often include Vite, npm, browser developer tools, component libraries, automated tests, and performance audits.</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b4",
+    "title": "How WebSockets Work",
+    "description": "A practical explanation of persistent browser connections, real-time messages, and the WebSocket flow.",
+    "date": "2026-09-24",
+    "sections": [
+      {
+        "id": "websocket-overview",
+        "title": "What Is a WebSocket?",
+        "content": "<p>A WebSocket is a communication protocol for real-time, two-way communication between a client and a server. Unlike a normal request where the client asks and the server responds, an open WebSocket connection allows either side to send messages at any time.</p><p>This makes WebSockets useful for chat applications, live notifications, multiplayer games, dashboards, collaboration tools, and delivery tracking.</p>"
+      },
+      {
+        "id": "websocket-flow",
+        "title": "Connection Flow",
+        "content": "<p>The connection begins as an HTTP request. The client and server perform a WebSocket handshake, then upgrade the connection so it can stay open for real-time communication.</p><div class=\"websocket-diagram\" role=\"img\" aria-label=\"WebSocket connection flow from browser to server and back\"><div class=\"websocket-node\"><strong>Browser</strong><span>WebSocket client</span></div><div class=\"websocket-arrow\">&rarr;<span>1. Handshake</span></div><div class=\"websocket-node\"><strong>Server</strong><span>WebSocket endpoint</span></div><div class=\"websocket-loop\"><span>2. Connection stays open</span><span>3. Messages travel both ways &harr;</span></div><div class=\"websocket-message websocket-message-client\">Client message &rarr; Server</div><div class=\"websocket-message websocket-message-server\">Server update &rarr; Client</div></div><p>After the upgrade, the server can push updates without waiting for another request. The same connection can carry many messages in both directions.</p>"
+      },
+      {
+        "id": "websocket-lifecycle",
+        "title": "Lifecycle and Events",
+        "content": "<p>A WebSocket connection has a simple lifecycle:</p><ol><li><strong>Connect:</strong> the client opens a connection to the server.</li><li><strong>Open:</strong> the handshake succeeds and messages can be exchanged.</li><li><strong>Message:</strong> either side sends data, often as JSON.</li><li><strong>Error:</strong> the client handles network or server problems.</li><li><strong>Close:</strong> the connection ends and the client may reconnect.</li></ol><p>Applications should handle reconnecting, authentication, invalid messages, timeouts, and cleanup when a user leaves the page.</p>"
+      },
+      {
+        "id": "websocket-example",
+        "title": "Small Browser Example",
+        "content": "<p>In a browser, the native WebSocket API can open a connection and listen for updates:</p><pre><code>const socket = new WebSocket(<br>  'wss://example.com/updates'<br>);<br><br>socket.addEventListener('open', () =&gt; {<br>  socket.send(JSON.stringify({ type: 'subscribe' }));<br>});<br><br>socket.addEventListener('message', (event) =&gt; {<br>  const update = JSON.parse(event.data);<br>  console.log(update);<br>});</code></pre><p>Use <code>wss://</code> in production so the connection is encrypted. The server should validate every message instead of trusting data from the browser.</p>"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "websocket-basics",
+        "title": "WebSocket Basics",
+        "description": "Understand the protocol, connection flow, lifecycle, and browser API before choosing a backend framework.",
+        "articleTitle": "How WebSockets Work",
+        "sections": [
+          {
+            "id": "websocket-overview-tab",
+            "title": "What Is a WebSocket?",
+            "content": "<p>A WebSocket is a communication protocol for real-time, two-way communication between a client and a server. An open connection allows either side to send messages at any time.</p>"
+          },
+          {
+            "id": "websocket-flow-tab",
+            "title": "Connection Flow",
+            "content": "<p>The browser starts with a handshake, the server accepts the upgrade, and the connection stays open for messages in both directions.</p><div class=\"websocket-diagram\" role=\"img\" aria-label=\"WebSocket connection flow from browser to server and back\"><div class=\"websocket-node\"><strong>Browser</strong><span>WebSocket client</span></div><div class=\"websocket-arrow\">&rarr;<span>Handshake</span></div><div class=\"websocket-node\"><strong>Server</strong><span>WebSocket endpoint</span></div><div class=\"websocket-loop\"><span>Connection stays open</span><span>Messages travel both ways &harr;</span></div></div>"
+          },
+          {
+            "id": "websocket-client-tab",
+            "title": "Browser Client",
+            "content": "<p>The browser can open a WebSocket connection and listen for server updates:</p><pre><code>const socket = new WebSocket('wss://example.com/updates');<br><br>socket.addEventListener('open', () =&gt; {<br>&nbsp;&nbsp;socket.send(JSON.stringify({ type: 'subscribe' }));<br>});<br><br>socket.addEventListener('message', (event) =&gt; {<br>&nbsp;&nbsp;const update = JSON.parse(event.data);<br>&nbsp;&nbsp;console.log(update);<br>});</code></pre><p>Use <code>wss://</code> in production so the connection is encrypted.</p>"
+          },
+          {
+            "id": "websocket-use-cases",
+            "title": "What Can WebSockets Be Used For?",
+            "content": "<p>WebSockets are useful whenever the application needs updates to arrive quickly without repeatedly polling the server.</p><ul><li><strong>Chat:</strong> deliver messages instantly between users.</li><li><strong>Notifications:</strong> push alerts, mentions, and status changes.</li><li><strong>Live dashboards:</strong> stream metrics, logs, and operational data.</li><li><strong>Collaboration:</strong> synchronize edits, cursors, and presence.</li><li><strong>Games:</strong> exchange player actions and game state.</li><li><strong>Tracking:</strong> show live delivery, vehicle, or job locations.</li></ul><p>Choose WebSockets when the server needs to push frequent updates. For simple request-and-response operations, a normal HTTP API is usually easier to maintain.</p>"
+          }
+        ]
+      },
+      {
+        "id": "django-websockets",
+        "title": "Django Setup",
+        "description": "Set up a Django WebSocket server with Channels, routing, a consumer, and a browser client.",
+        "articleTitle": "WebSockets with Django",
+        "sections": [
+          {
+            "id": "django-install",
+            "title": "Backend: Install and Configure",
+            "content": "<p>Django commonly uses <strong>Django Channels</strong> to support WebSockets and asynchronous consumers.</p><pre><code>pip install django channels channels-redis</code></pre><p>Add Channels to <code>INSTALLED_APPS</code> and configure the ASGI application in <code>settings.py</code>:</p><pre><code>INSTALLED_APPS = ['channels', 'chat']<br><br>ASGI_APPLICATION = 'project.asgi.application'<br><br>CHANNEL_LAYERS = {<br>&nbsp;&nbsp;&nbsp;&nbsp;'default': {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'BACKEND': 'channels_redis.core.RedisChannelLayer',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'CONFIG': {'hosts': [('127.0.0.1', 6379)]}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</code></pre>"
+          },
+          {
+            "id": "django-consumer",
+            "title": "Backend: Consumer and Routing",
+            "content": "<p>A consumer receives connection, message, and disconnect events. The route maps a WebSocket URL to that consumer.</p><pre><code>from channels.generic.websocket import AsyncWebsocketConsumer<br><br>class ChatConsumer(AsyncWebsocketConsumer):<br>&nbsp;&nbsp;&nbsp;&nbsp;async def connect(self):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;await self.accept()<br><br>&nbsp;&nbsp;&nbsp;&nbsp;async def receive(self, text_data):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;await self.send(text_data=text_data)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;async def disconnect(self, close_code):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass</code></pre><pre><code>from django.urls import re_path<br>from .consumers import ChatConsumer<br><br>websocket_urlpatterns = [<br>&nbsp;&nbsp;&nbsp;&nbsp;re_path(r'ws/chat/$', ChatConsumer.as_asgi())<br>]</code></pre>"
+          },
+          {
+            "id": "django-client",
+            "title": "Frontend: Browser Client",
+            "content": "<p>The frontend connects to the Django ASGI server using the matching WebSocket route:</p><pre><code>const socket = new WebSocket('ws://localhost:8000/ws/chat/');<br><br>socket.onmessage = (event) =&gt; {<br>&nbsp;&nbsp;const message = JSON.parse(event.data);<br>&nbsp;&nbsp;console.log(message);<br>};</code></pre><p>Use Redis as the channel layer when multiple server processes need to share messages.</p>"
+          }
+        ]
+      },
+      {
+        "id": "spring-websockets",
+        "title": "Spring Boot Setup",
+        "description": "Build a Spring Boot WebSocket endpoint with STOMP messaging and a browser client.",
+        "articleTitle": "WebSockets with Spring Boot",
+        "sections": [
+          {
+            "id": "spring-install",
+            "title": "Backend: Dependency and Configuration",
+            "content": "<p>Spring Boot can provide WebSocket messaging with the WebSocket starter and STOMP support.</p><pre><code>&lt;dependency&gt;<br>&nbsp;&nbsp;&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>&nbsp;&nbsp;&lt;artifactId&gt;spring-boot-starter-websocket&lt;/artifactId&gt;<br>&lt;/dependency&gt;</code></pre><p>Enable a message broker and define the application destination prefix:</p><pre><code>@Configuration<br>@EnableWebSocketMessageBroker<br>public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {<br>&nbsp;&nbsp;&nbsp;&nbsp;@Override<br>&nbsp;&nbsp;&nbsp;&nbsp;public void configureMessageBroker(MessageBrokerRegistry config) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config.enableSimpleBroker(&quot;/topic&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config.setApplicationDestinationPrefixes(&quot;/app&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</code></pre>"
+          },
+          {
+            "id": "spring-controller",
+            "title": "Backend: Message Controller",
+            "content": "<p>A controller receives messages sent to the application destination and broadcasts a response to subscribers.</p><pre><code>@Controller<br>public class ChatController {<br>&nbsp;&nbsp;&nbsp;&nbsp;@MessageMapping(&quot;/chat&quot;)<br>&nbsp;&nbsp;&nbsp;&nbsp;@SendTo(&quot;/topic/messages&quot;)<br>&nbsp;&nbsp;&nbsp;&nbsp;public ChatMessage send(ChatMessage message) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return message;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</code></pre><p>Clients send to <code>/app/chat</code> and subscribe to <code>/topic/messages</code>.</p>"
+          },
+          {
+            "id": "spring-client",
+            "title": "Frontend: Browser Client",
+            "content": "<p>With STOMP, the browser connects through a SockJS endpoint and subscribes to a topic:</p><pre><code>const socket = new SockJS('/ws');<br>const client = Stomp.over(socket);<br><br>client.connect({}, () =&gt; {<br>&nbsp;&nbsp;client.subscribe('/topic/messages', (message) =&gt; {<br>&nbsp;&nbsp;&nbsp;&nbsp;console.log(JSON.parse(message.body));<br>&nbsp;&nbsp;});<br><br>&nbsp;&nbsp;client.send('/app/chat', {}, JSON.stringify({ text: 'Hello' }));<br>});</code></pre><p>Spring Boot is useful when you need structured destinations, subscriptions, user-specific messages, and broker-style communication.</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b5",
+    "title": "Machine Learning Explained",
+    "description": "A practical introduction to how machine learning learns from data and makes predictions.",
+    "date": "2026-09-24",
+    "sections": [
+      {
+        "id": "ml-overview",
+        "title": "What Is Machine Learning?",
+        "content": "<p>Machine learning is a way to build software that learns patterns from data instead of relying only on manually written rules. A model studies examples, finds relationships, and uses those relationships to make predictions on new data.</p><p>Examples include predicting prices, detecting fraud, classifying images, recommending products, and estimating risk.</p>"
+      },
+      {
+        "id": "ml-flow",
+        "title": "The Machine Learning Flow",
+        "content": "<p>A typical machine learning project follows a repeatable flow:</p><div class=\"ml-flow-diagram\" role=\"img\" aria-label=\"Machine learning flow from data to prediction\"><div class=\"ml-flow-step\"><strong>1</strong><span>Collect data</span></div><span class=\"ml-flow-arrow\">&rarr;</span><div class=\"ml-flow-step\"><strong>2</strong><span>Prepare data</span></div><span class=\"ml-flow-arrow\">&rarr;</span><div class=\"ml-flow-step\"><strong>3</strong><span>Train model</span></div><span class=\"ml-flow-arrow\">&rarr;</span><div class=\"ml-flow-step\"><strong>4</strong><span>Evaluate</span></div><span class=\"ml-flow-arrow\">&rarr;</span><div class=\"ml-flow-step\"><strong>5</strong><span>Predict</span></div></div><p>The most important work often happens before training: defining the target, cleaning the data, selecting useful features, and choosing a metric that matches the real problem.</p>"
+      },
+      {
+        "id": "ml-types",
+        "title": "Types of Learning",
+        "content": "<ul><li><strong>Supervised learning:</strong> learns from examples that include the correct answer, such as labeled images or known prices.</li><li><strong>Unsupervised learning:</strong> looks for groups or patterns without a provided answer, such as customer segments.</li><li><strong>Reinforcement learning:</strong> learns actions through rewards and feedback, such as game-playing agents or robotic control.</li></ul>"
+      },
+      {
+        "id": "ml-cleaning",
+        "title": "Data Cleaning and Preprocessing",
+        "content": "<p>Raw data often contains missing values, duplicate records, inconsistent formats, outliers, and incorrect labels. Data cleaning makes the input more reliable before a model learns from it.</p><ul><li>Remove or fill missing values.</li><li>Remove duplicate and invalid records.</li><li>Convert dates, categories, and text into usable features.</li><li>Scale numeric values when the algorithm benefits from similar ranges.</li><li>Split data before fitting transformations to avoid leakage.</li></ul><p>Preprocessing is part of the model pipeline so the same transformations are applied during training and prediction.</p>"
+      },
+      {
+        "id": "ml-nlp",
+        "title": "NLP and Other ML Topics",
+        "content": "<p>Natural language processing, or NLP, applies machine learning to human language. Common tasks include sentiment analysis, text classification, translation, summarization, question answering, and chat systems.</p><p>Other important areas include computer vision for images and video, time-series forecasting for values over time, recommendation systems for personalized content, and feature engineering for creating useful signals from raw data.</p>"
+      },
+      {
+        "id": "ml-models",
+        "title": "Common Algorithms",
+        "content": "<p>Common starting algorithms include linear regression for numeric predictions, logistic regression for classification, decision trees and random forests for explainable rules, gradient boosting for strong tabular performance, and neural networks for complex patterns in text, images, and audio.</p><p>The best model is not always the most complex one. A simpler model that is reliable, explainable, and easy to maintain can be the better production choice.</p>"
+      },
+      {
+        "id": "ml-evaluation",
+        "title": "Training and Evaluation",
+        "content": "<p>Split the dataset into training and testing data so the model is evaluated on examples it has not seen. A validation set or cross-validation can help compare models and tune settings.</p><ul><li><strong>Regression metrics:</strong> MAE, MSE, and RMSE.</li><li><strong>Classification metrics:</strong> accuracy, precision, recall, F1 score, and ROC-AUC.</li><li><strong>Practical checks:</strong> latency, memory, fairness, interpretability, and behavior on real-world data.</li></ul><p>Watch for overfitting, where a model performs well on training data but poorly on new data.</p>"
+      },
+      {
+        "id": "ml-tools",
+        "title": "Languages and Tools",
+        "content": "<p>Python is the most common language for machine learning because of its ecosystem. NumPy and pandas help with data, scikit-learn provides classical algorithms, Matplotlib and Seaborn support visualization, and PyTorch or TensorFlow support deep learning.</p><pre><code>import pandas as pd<br>from sklearn.model_selection import train_test_split<br>from sklearn.ensemble import RandomForestClassifier<br><br>data = pd.read_csv('data.csv')<br>X_train, X_test, y_train, y_test = train_test_split(<br>&nbsp;&nbsp;&nbsp;&nbsp;data.drop('target', axis=1),<br>&nbsp;&nbsp;&nbsp;&nbsp;data['target'],<br>&nbsp;&nbsp;&nbsp;&nbsp;test_size=0.2,<br>&nbsp;&nbsp;&nbsp;&nbsp;random_state=42<br>)<br><br>model = RandomForestClassifier(random_state=42)<br>model.fit(X_train, y_train)<br>predictions = model.predict(X_test)</code></pre>"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "ml-what-is",
+        "title": "What Is ML?",
+        "description": "Learn what machine learning is, what it is used for, and how it helps solve practical problems.",
+        "articleTitle": "What Is Machine Learning Used For?",
+        "sections": [
+          {
+            "id": "ml-purpose",
+            "title": "Purpose and Benefits",
+            "content": "<p>Machine learning helps software find useful patterns in large or changing datasets. Instead of writing a rule for every possible case, a model can learn from examples and estimate the most likely result.</p><ul><li>Automate repetitive decisions.</li><li>Find patterns people may miss.</li><li>Personalize recommendations and experiences.</li><li>Predict risks, demand, or future values.</li><li>Understand images, audio, and language.</li></ul>"
+          },
+          {
+            "id": "ml-use-cases",
+            "title": "Common Uses",
+            "content": "<p>Machine learning is used for spam filtering, fraud detection, medical image analysis, search ranking, product recommendations, customer support, predictive maintenance, forecasting, and document processing.</p><p>It works best when there is useful data, a measurable goal, and a clear way to evaluate whether predictions help.</p>"
+          },
+          {
+            "id": "ml-topic-map",
+            "title": "Important ML Topics",
+            "content": "<ul><li><strong>Data cleaning:</strong> fix missing values, duplicates, invalid records, and inconsistent formats.</li><li><strong>Preprocessing:</strong> encode categories, scale values, transform text, and prepare model inputs.</li><li><strong>Feature engineering:</strong> create useful signals from raw data.</li><li><strong>NLP:</strong> work with language, sentiment, search, translation, and chat systems.</li><li><strong>Computer vision:</strong> analyze images, video, objects, and visual patterns.</li><li><strong>Time series:</strong> forecast values such as demand, traffic, or temperature.</li><li><strong>Recommendation systems:</strong> personalize products, content, or search results.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "ml-project-flow",
+        "title": "ML Project Flow",
+        "description": "Follow the complete process from defining a problem to deploying and monitoring a model.",
+        "articleTitle": "How an ML Project Is Made",
+        "sections": [
+          {
+            "id": "project-steps",
+            "title": "End-to-End Steps",
+            "content": "<ol><li>Define the problem and prediction target.</li><li>Collect and understand the data.</li><li>Clean data and create useful features.</li><li>Split data into training, validation, and test sets.</li><li>Train baseline models.</li><li>Compare results with an appropriate metric.</li><li>Deploy the model behind an API or batch process.</li><li>Monitor predictions and retrain when data changes.</li></ol>"
+          },
+          {
+            "id": "project-checklist",
+            "title": "Project Checklist",
+            "content": "<ul class=\"blog-checklist\"><li><label><input type=\"checkbox\"> Define the problem and prediction target</label></li><li><label><input type=\"checkbox\"> Collect and understand the data</label></li><li><label><input type=\"checkbox\"> Clean data and create useful features</label></li><li><label><input type=\"checkbox\"> Train and compare baseline models</label></li><li><label><input type=\"checkbox\"> Evaluate on unseen data</label></li><li><label><input type=\"checkbox\"> Monitor the model after deployment</label></li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "mlops",
+        "title": "What Is MLOps?",
+        "description": "Understand how teams version, deploy, monitor, and maintain machine learning systems.",
+        "articleTitle": "What Is MLOps?",
+        "sections": [
+          {
+            "id": "mlops-definition",
+            "title": "MLOps Explained",
+            "content": "<p>MLOps combines machine learning, software engineering, and operations practices. It helps teams move models from experiments into reliable products.</p><p>MLOps covers data versioning, reproducible training, model versioning, automated testing, deployment, monitoring, and retraining.</p>"
+          },
+          {
+            "id": "mlops-flow",
+            "title": "MLOps Lifecycle",
+            "content": "<p>A typical MLOps lifecycle is:</p><ol><li>Track data and code changes.</li><li>Run repeatable training pipelines.</li><li>Evaluate and register model versions.</li><li>Deploy through an API or batch job.</li><li>Monitor quality, drift, latency, and cost.</li><li>Retrain and promote a new version when needed.</li></ol>"
+          },
+          {
+            "id": "mlops-tools",
+            "title": "MLOps Tools",
+            "content": "<p>Teams may use Docker for packaging, GitHub Actions for automation, MLflow for experiment and model tracking, Airflow or Prefect for workflows, cloud services for deployment, and Prometheus or Grafana for monitoring.</p><p>The goal is not to use every tool. The goal is to make the model lifecycle repeatable, observable, and dependable.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-data-cleaning",
+        "title": "Data Cleaning",
+        "description": "Understand how raw, messy data is inspected and corrected before training.",
+        "articleTitle": "What Is Data Cleaning?",
+        "sections": [
+          {
+            "id": "cleaning-work",
+            "title": "What Is Done",
+            "content": "<p>Data cleaning is the process of finding and correcting problems in a dataset. A developer checks missing values, duplicate rows, invalid types, impossible values, inconsistent labels, and unusual outliers.</p><p>For example, dates may use different formats, a country may appear as both <code>US</code> and <code>United States</code>, or a numeric column may contain empty strings.</p>"
+          },
+          {
+            "id": "cleaning-why",
+            "title": "Why It Matters",
+            "content": "<p>Models learn from the data they receive. If the data is incorrect or inconsistent, the model can learn noise and produce unreliable predictions. Cleaning improves accuracy, reduces unexpected behavior, and makes results easier to trust.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-preprocessing",
+        "title": "Preprocessing",
+        "description": "Learn how cleaned data is transformed into a format a model can understand.",
+        "articleTitle": "What Is Data Preprocessing?",
+        "sections": [
+          {
+            "id": "preprocessing-work",
+            "title": "What Is Done",
+            "content": "<p>Preprocessing transforms prepared data into model-ready inputs. Common steps include scaling numeric values, encoding categories, tokenizing text, resizing images, selecting columns, and splitting data into training and testing sets.</p><p>Transformations must be fitted on training data and then reused for validation, testing, and production predictions.</p>"
+          },
+          {
+            "id": "preprocessing-why",
+            "title": "Why It Matters",
+            "content": "<p>Algorithms work with numbers and consistent representations. Good preprocessing helps models learn useful patterns, prevents data leakage, improves training stability, and keeps the training and production inputs consistent.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-feature-engineering",
+        "title": "Feature Engineering",
+        "description": "Learn how raw columns become meaningful signals for a model.",
+        "articleTitle": "What Is Feature Engineering?",
+        "sections": [
+          {
+            "id": "features-work",
+            "title": "What Is Done",
+            "content": "<p>Feature engineering creates useful input signals from raw data. A date can become day of week, month, or season. A transaction history can become total spend, average order value, or number of recent purchases.</p>"
+          },
+          {
+            "id": "features-why",
+            "title": "Why It Matters",
+            "content": "<p>Useful features make important patterns easier for a model to learn. Strong features can improve a simple algorithm, while poor features can limit even a complex model.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-nlp-topic",
+        "title": "NLP",
+        "description": "Understand how machine learning works with human language and text.",
+        "articleTitle": "What Is Natural Language Processing?",
+        "sections": [
+          {
+            "id": "nlp-work",
+            "title": "What Is Done",
+            "content": "<p>NLP converts language into information a model can process. Systems may clean text, split it into tokens, remove or preserve important words, create embeddings, and classify or generate language.</p><p>Common tasks include sentiment analysis, search, translation, summarization, named-entity recognition, and question answering.</p>"
+          },
+          {
+            "id": "nlp-why",
+            "title": "Why It Matters",
+            "content": "<p>NLP lets software work with support tickets, documents, messages, reviews, and voice transcripts. It helps teams search large collections, automate classification, understand customer feedback, and build conversational applications.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-vision-topic",
+        "title": "Computer Vision",
+        "description": "Learn how models understand images and video.",
+        "articleTitle": "What Is Computer Vision?",
+        "sections": [
+          {
+            "id": "vision-work",
+            "title": "What Is Done",
+            "content": "<p>Computer vision processes images or video to recognize objects, classify scenes, detect locations, read text, or segment regions. Images may be resized, normalized, augmented, and labeled before training.</p>"
+          },
+          {
+            "id": "vision-why",
+            "title": "Why It Matters",
+            "content": "<p>Computer vision supports quality inspection, medical analysis, document scanning, identity verification, traffic monitoring, and visual search.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-timeseries-topic",
+        "title": "Time Series",
+        "description": "Understand how models learn from values that change over time.",
+        "articleTitle": "What Is Time-Series Forecasting?",
+        "sections": [
+          {
+            "id": "timeseries-work",
+            "title": "What Is Done",
+            "content": "<p>Time-series work studies ordered observations such as sales, temperature, traffic, or sensor readings. Developers look for trends, seasonality, cycles, delays, and unusual changes.</p>"
+          },
+          {
+            "id": "timeseries-why",
+            "title": "Why It Matters",
+            "content": "<p>Forecasting helps teams plan inventory, staffing, energy use, budgets, and maintenance. Evaluation must respect time order so future information does not leak into the past.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-recommendations-topic",
+        "title": "Recommendations",
+        "description": "Learn how systems personalize products, content, and search results.",
+        "articleTitle": "What Are Recommendation Systems?",
+        "sections": [
+          {
+            "id": "recommendations-work",
+            "title": "What Is Done",
+            "content": "<p>Recommendation systems compare users, items, and behavior to estimate what someone may find useful. They can use similar users, similar items, item attributes, or a combination of these signals.</p>"
+          },
+          {
+            "id": "recommendations-why",
+            "title": "Why It Matters",
+            "content": "<p>Recommendations help people discover relevant products, videos, articles, jobs, or music. Good systems balance relevance with diversity, freshness, fairness, and protection against unwanted feedback loops.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-models-topic",
+        "title": "ML Models",
+        "description": "A guide to the main machine learning model families, what they do, and when to use them.",
+        "articleTitle": "Machine Learning Models Explained",
+        "sections": [
+          {
+            "id": "supervised-models",
+            "title": "Supervised Models",
+            "content": "<p>Supervised models learn from labeled examples where the expected answer is known.</p><ul><li><strong>Linear regression:</strong> predicts continuous numbers such as price, demand, or temperature. It is fast and easy to interpret.</li><li><strong>Logistic regression:</strong> predicts classes or probabilities such as churn, fraud, or approval. It is a strong and explainable baseline.</li><li><strong>Decision trees:</strong> split data through readable if-and-then rules. They work with mixed features but can overfit.</li><li><strong>Random forests:</strong> combine many decision trees to improve stability and accuracy.</li><li><strong>Gradient boosting:</strong> builds trees sequentially to correct earlier errors. XGBoost, LightGBM, and CatBoost are popular implementations for tabular data.</li><li><strong>Support vector machines:</strong> find a boundary between classes and can work well in high-dimensional spaces.</li><li><strong>K-nearest neighbors:</strong> predicts from nearby examples. It is simple, but can become slow with large datasets.</li><li><strong>Naive Bayes:</strong> uses probability assumptions and is useful for fast text classification and spam detection.</li></ul>"
+          },
+          {
+            "id": "unsupervised-models",
+            "title": "Unsupervised Models",
+            "content": "<p>Unsupervised models learn from data without a target label. They help reveal structure that was not explicitly provided.</p><ul><li><strong>K-means clustering:</strong> groups similar records into a chosen number of clusters.</li><li><strong>Hierarchical clustering:</strong> builds a tree of related groups and helps explore relationships at different levels.</li><li><strong>DBSCAN:</strong> finds dense groups and can identify noise or outliers without requiring a fixed number of clusters.</li><li><strong>PCA:</strong> reduces many features into fewer components while preserving as much variation as possible.</li><li><strong>Autoencoders:</strong> learn compressed representations and can help with anomaly detection or feature learning.</li></ul>"
+          },
+          {
+            "id": "deep-learning-models",
+            "title": "Deep Learning Models",
+            "content": "<p>Deep learning models use layers of neural networks to learn complex representations, especially from large datasets.</p><ul><li><strong>Feedforward networks:</strong> map input features to predictions for common classification and regression tasks.</li><li><strong>CNNs:</strong> learn visual patterns such as edges, shapes, and objects in images or video.</li><li><strong>RNNs and LSTMs:</strong> process ordered sequences such as time series or older text-generation systems.</li><li><strong>Transformers:</strong> use attention to understand relationships across text, code, images, and other sequences. They power many modern language models.</li><li><strong>Generative models:</strong> create new text, images, audio, or other data based on learned patterns.</li></ul>"
+          },
+          {
+            "id": "model-selection",
+            "title": "Choosing a Model",
+            "content": "<p>Choose a model based on the problem, data size, feature types, accuracy needs, latency, interpretability, and maintenance cost. Start with a simple baseline, compare it with stronger candidates, and evaluate using data the model has not seen.</p><p>A complex model is not automatically better. The best model is the one that solves the real problem reliably and can be operated responsibly.</p>"
+          }
+        ]
+      },
+      {
+        "id": "ml-mathematics",
+        "title": "Mathematics for ML",
+        "description": "Learn the statistics, calculus, and algebra topics behind machine learning, with formulas and examples.",
+        "articleTitle": "Mathematics for Machine Learning",
+        "sections": [
+          {
+            "id": "math-statistics",
+            "title": "Statistics",
+            "content": "<p>Statistics helps us summarize data, measure uncertainty, compare groups, and decide whether a pattern is meaningful.</p><h3>Mean and Median</h3><p><strong>Mean:</strong> <code>x&#772; = (x<sub>1</sub> + x<sub>2</sub> + ... + x<sub>n</sub>) / n</code>. For values 2, 4, and 6, the mean is 4. The <strong>median</strong> is the middle value after sorting, which is useful when outliers could distort the mean.</p><h3>Variance and Standard Deviation</h3><p><code>Variance = (1 / n) &times; &Sigma;(x<sub>i</sub> - x&#772;)<sup>2</sup></code> and <code>Standard deviation = &radic;Variance</code>. They measure how spread out values are. A model can use this information to detect unusual records or scale features.</p><h3>Probability and Bayes' Rule</h3><p><code>P(A|B) = P(B|A) &times; P(A) / P(B)</code>. Bayes' rule updates the probability of an event after new evidence. It is used in spam filtering, diagnosis, and probabilistic classifiers.</p>"
+          },
+          {
+            "id": "math-calculus",
+            "title": "Calculus",
+            "content": "<p>Calculus helps machine learning measure change and optimize model parameters.</p><h3>Derivative</h3><p>A derivative describes how quickly a value changes. For <code>f(x) = x<sup>2</sup></code>, the derivative is <code>f'(x) = 2x</code>. At <code>x = 3</code>, the slope is 6.</p><h3>Gradient Descent</h3><p>Models use gradients to reduce an error or loss function. The update rule is <code>&theta;<sub>new</sub> = &theta;<sub>old</sub> - &alpha;&nabla;J(&theta;)</code>, where <code>&alpha;</code> is the learning rate and <code>&nabla;J(&theta;)</code> points toward increasing loss. Subtracting the gradient moves the model toward lower loss.</p><h3>Why It Is Needed</h3><p>Calculus powers training in linear regression, logistic regression, neural networks, and deep learning. It tells the optimizer which direction to adjust weights.</p>"
+          },
+          {
+            "id": "math-algebra",
+            "title": "Linear Algebra",
+            "content": "<p>Linear algebra provides the language for representing features, model weights, images, and neural network operations.</p><h3>Vectors</h3><p>A vector stores related values, such as a house represented by <code>x = [area, bedrooms, age]</code>. A model can calculate a weighted score with <code>w&middot;x = w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + ... + w<sub>n</sub>x<sub>n</sub></code>.</p><h3>Matrices</h3><p>A matrix stores many rows of features. Matrix multiplication combines inputs and weights efficiently, which is central to neural network layers.</p><h3>Useful Operations</h3><ul><li><strong>Dot product:</strong> measures alignment or creates a weighted sum.</li><li><strong>Matrix multiplication:</strong> transforms many examples at once.</li><li><strong>Transpose:</strong> swaps rows and columns.</li><li><strong>Norm:</strong> measures vector size and supports distance calculations.</li><li><strong>Eigenvectors and PCA:</strong> help find important directions in high-dimensional data.</li></ul>"
+          },
+          {
+            "id": "math-ml-connection",
+            "title": "How the Topics Connect",
+            "content": "<p>These areas work together in a real ML project:</p><ol><li>Statistics describes the data and its uncertainty.</li><li>Linear algebra represents the data and model parameters.</li><li>Calculus calculates how the loss changes.</li><li>An optimizer uses the gradient to update the parameters.</li><li>Statistics evaluates whether the final predictions generalize.</li></ol><p>You do not need to solve every equation by hand, but understanding these ideas makes model behavior, errors, and training decisions much easier to explain.</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b6",
+    "title": "Docker Explained",
+    "description": "What Docker is, why teams use containers, and how it makes software easier to build and deploy.",
+    "date": "2026-09-24",
+    "sections": [
+      {
+        "id": "docker-what",
+        "title": "What Is Docker?",
+        "content": "<p>Docker packages an application together with its dependencies into a portable container. The container gives the application a predictable environment wherever Docker runs.</p><p>A container is not a full virtual machine. It shares the host operating system kernel while keeping the application process and its files isolated.</p>"
+      },
+      {
+        "id": "docker-why",
+        "title": "Why Do We Need It?",
+        "content": "<p>Applications often fail when development, testing, and production environments have different versions of libraries, runtimes, or system tools. Docker reduces this problem by describing the environment as code.</p><ul><li>Works consistently across machines.</li><li>Onboards developers faster.</li><li>Separates application dependencies.</li><li>Makes deployments repeatable.</li><li>Supports isolated services such as databases and queues.</li></ul>"
+      },
+      {
+        "id": "docker-flow",
+        "title": "How Docker Works",
+        "content": "<p>A developer writes a <code>Dockerfile</code>, builds an image, and starts a container from that image.</p><div class=\"docker-flow-diagram\" role=\"img\" aria-label=\"Docker flow from Dockerfile to image to container\"><div class=\"docker-flow-step\"><strong>Dockerfile</strong><span>Instructions</span></div><span class=\"docker-flow-arrow\">&rarr;</span><div class=\"docker-flow-step\"><strong>Image</strong><span>Packaged template</span></div><span class=\"docker-flow-arrow\">&rarr;</span><div class=\"docker-flow-step\"><strong>Container</strong><span>Running process</span></div></div><pre><code>docker build -t my-app .<br>docker run -p 8080:8080 my-app</code></pre>"
+      },
+      {
+        "id": "docker-helps",
+        "title": "What Does It Help With?",
+        "content": "<p>Docker helps frontend and backend teams package APIs, workers, databases, and development tools. Docker Compose can run several related services together, while registries store images for teams and deployment systems.</p><p>Docker does not automatically solve scaling, security, or monitoring. It provides a consistent packaging and execution layer that other systems can manage.</p>"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "docker-basics",
+        "title": "Docker Basics",
+        "description": "Learn what Docker is, why containers are useful, and how images become running containers.",
+        "articleTitle": "Docker Basics",
+        "sections": [
+          {
+            "id": "docker-basics-what",
+            "title": "What Is Docker?",
+            "content": "<p>Docker packages an application and its dependencies into a portable container. This makes the application environment predictable across development, testing, and deployment.</p>"
+          },
+          {
+            "id": "docker-basics-flow",
+            "title": "Image to Container",
+            "content": "<p>A <code>Dockerfile</code> contains build instructions. Docker uses it to create an image, and a container runs a process from that image.</p><div class=\"docker-flow-diagram\" role=\"img\" aria-label=\"Docker flow from Dockerfile to image to container\"><div class=\"docker-flow-step\"><strong>Dockerfile</strong><span>Instructions</span></div><span class=\"docker-flow-arrow\">&rarr;</span><div class=\"docker-flow-step\"><strong>Image</strong><span>Packaged template</span></div><span class=\"docker-flow-arrow\">&rarr;</span><div class=\"docker-flow-step\"><strong>Container</strong><span>Running process</span></div></div>"
+          },
+          {
+            "id": "docker-basics-benefits",
+            "title": "Why Use Docker?",
+            "content": "<ul><li>Keep environments consistent.</li><li>Isolate application dependencies.</li><li>Make deployment repeatable.</li><li>Run services such as APIs, workers, databases, and queues.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "docker-commands",
+        "title": "Docker Commands",
+        "description": "A practical Docker command library with what each command does and an example for using it.",
+        "articleTitle": "Docker Command Library",
+        "sections": [
+          {
+            "id": "docker-install-check",
+            "title": "Check Docker",
+            "content": "<p>Confirm Docker is installed and the engine is available:</p><pre><code>docker --version<br>docker info</code></pre><p><code>docker --version</code> shows the installed CLI version. <code>docker info</code> checks the connected Docker engine and prints its configuration.</p>"
+          },
+          {
+            "id": "docker-images",
+            "title": "Images",
+            "content": "<p>Images are packaged templates used to create containers.</p><pre><code>docker build -t my-app:1.0 .<br>docker images<br>docker pull nginx:latest<br>docker rmi my-app:1.0</code></pre><ul><li><code>docker build</code> creates an image from a Dockerfile.</li><li><code>docker images</code> lists local images.</li><li><code>docker pull</code> downloads an image from a registry.</li><li><code>docker rmi</code> removes an image.</li></ul>"
+          },
+          {
+            "id": "docker-containers",
+            "title": "Containers",
+            "content": "<p>Containers are running or stopped instances created from images.</p><pre><code>docker run -d --name web -p 8080:80 nginx<br>docker ps<br>docker ps -a<br>docker stop web<br>docker start web<br>docker rm web</code></pre><ul><li><code>docker run</code> creates and starts a container.</li><li><code>-d</code> runs it in the background.</li><li><code>-p 8080:80</code> maps host port 8080 to container port 80.</li><li><code>docker ps</code> lists running containers.</li><li><code>docker stop</code>, <code>start</code>, and <code>rm</code> manage its lifecycle.</li></ul>"
+          },
+          {
+            "id": "docker-debugging",
+            "title": "Logs and Debugging",
+            "content": "<p>Use these commands to inspect what a container is doing:</p><pre><code>docker logs -f web<br>docker exec -it web sh<br>docker inspect web<br>docker stats</code></pre><ul><li><code>docker logs -f</code> follows application output.</li><li><code>docker exec</code> opens a command inside a running container.</li><li><code>docker inspect</code> shows configuration and networking details.</li><li><code>docker stats</code> displays CPU, memory, and network usage.</li></ul>"
+          },
+          {
+            "id": "docker-storage-network",
+            "title": "Volumes and Networks",
+            "content": "<p>Volumes persist data beyond the life of a container. Networks allow containers to communicate by service name.</p><pre><code>docker volume create app-data<br>docker run -v app-data:/var/lib/app my-app<br>docker network create app-network<br>docker run --network app-network --name api my-api</code></pre><p>Use volumes for database or uploaded data. Use custom networks when multiple containers need private communication.</p>"
+          },
+          {
+            "id": "docker-compose-cleanup",
+            "title": "Compose and Cleanup",
+            "content": "<p>Docker Compose describes multiple services in a YAML file and starts them together.</p><pre><code>docker compose up -d<br>docker compose ps<br>docker compose logs -f<br>docker compose down</code></pre><p>Use <code>docker compose up</code> for a frontend, API, and database stack. Use <code>docker compose down</code> to stop and remove the stack. Remove unused resources carefully:</p><pre><code>docker container prune<br>docker image prune<br>docker system prune</code></pre>"
+          },
+          {
+            "id": "docker-registry",
+            "title": "Tag and Push Images",
+            "content": "<p>Tag an image with a registry name, authenticate, and push it so a deployment system can pull it.</p><pre><code>docker login<br>docker tag my-app:1.0 username/my-app:1.0<br>docker push username/my-app:1.0</code></pre><p>Use immutable version tags in production instead of relying only on <code>latest</code>.</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b7",
+    "title": "Kubernetes Explained",
+    "description": "What Kubernetes is, why it is used, and how it manages containerized applications at scale.",
+    "date": "2026-09-24",
+    "sections": [
+      {
+        "id": "k8s-what",
+        "title": "What Is Kubernetes?",
+        "content": "<p>Kubernetes is an orchestration platform for running and managing containers across a cluster of machines. It keeps applications running, replaces failed containers, and routes traffic to healthy instances.</p><p>Docker packages the application; Kubernetes coordinates many running containers and services.</p>"
+      },
+      {
+        "id": "k8s-why",
+        "title": "Why Do We Need It?",
+        "content": "<p>Running one container manually is simple. Running hundreds of containers across multiple machines requires scheduling, networking, service discovery, health checks, scaling, secrets, and updates.</p><ul><li>Restarts failed workloads.</li><li>Scales replicas up or down.</li><li>Distributes traffic between instances.</li><li>Supports rolling updates and rollbacks.</li><li>Uses desired state to keep systems consistent.</li></ul>"
+      },
+      {
+        "id": "k8s-architecture",
+        "title": "Core Architecture",
+        "content": "<p>A Kubernetes cluster has a control plane and worker nodes. The control plane stores the desired state and schedules work. Worker nodes run the application workloads.</p><ul><li><strong>Pod:</strong> the smallest deployable unit, usually containing one application container.</li><li><strong>Deployment:</strong> describes replicas and update strategy.</li><li><strong>Service:</strong> provides stable networking to a group of Pods.</li><li><strong>Ingress:</strong> routes external HTTP traffic into services.</li><li><strong>ConfigMap and Secret:</strong> provide configuration and sensitive values.</li></ul>"
+      },
+      {
+        "id": "k8s-example",
+        "title": "Basic Deployment Example",
+        "content": "<p>A deployment describes how a container should run:</p><pre><code>apiVersion: apps/v1<br>kind: Deployment<br>metadata:<br>&nbsp;&nbsp;name: web-app<br>spec:<br>&nbsp;&nbsp;replicas: 3<br>&nbsp;&nbsp;selector:<br>&nbsp;&nbsp;&nbsp;&nbsp;matchLabels:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;app: web-app<br>&nbsp;&nbsp;template:<br>&nbsp;&nbsp;&nbsp;&nbsp;metadata:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labels:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;app: web-app<br>&nbsp;&nbsp;&nbsp;&nbsp;spec:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;containers:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- name: web-app<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image: my-app:1.0</code></pre><p>Kubernetes compares the desired state with the actual state and works to close the gap.</p>"
+      }
+    ]
+  },
+  {
+    "id": "b8",
+    "title": "Cloud Systems Explained",
+    "description": "A practical introduction to cloud computing, its services, benefits, and architecture.",
+    "date": "2026-09-24",
+    "sections": [
+      {
+        "id": "cloud-what",
+        "title": "What Is Cloud Computing?",
+        "content": "<p>Cloud computing provides computing resources over the internet instead of requiring a team to own and maintain every physical server. Resources can include compute, storage, databases, networking, monitoring, and managed application services.</p><p>Cloud systems are usually available on demand and are billed according to usage or subscription.</p>"
+      },
+      {
+        "id": "cloud-services",
+        "title": "Service Models",
+        "content": "<ul><li><strong>IaaS:</strong> rent virtual machines, networks, and storage while managing more of the operating system.</li><li><strong>PaaS:</strong> deploy applications to a managed runtime without managing most server infrastructure.</li><li><strong>SaaS:</strong> use a complete software product managed by another provider.</li><li><strong>Serverless:</strong> run functions or services while the provider handles server capacity and scaling.</li></ul>"
+      },
+      {
+        "id": "cloud-architecture",
+        "title": "How a Cloud System Works",
+        "content": "<p>A common web architecture places a user at the edge, routes traffic through a load balancer, runs application services, stores data in managed databases, and sends files through object storage or a CDN.</p><div class=\"cloud-flow-diagram\" role=\"img\" aria-label=\"Cloud system flow from user to edge, application, database, and storage\"><div class=\"cloud-flow-step\"><strong>User</strong><span>Browser or app</span></div><span class=\"cloud-flow-arrow\">&rarr;</span><div class=\"cloud-flow-step\"><strong>Edge</strong><span>DNS and CDN</span></div><span class=\"cloud-flow-arrow\">&rarr;</span><div class=\"cloud-flow-step\"><strong>App</strong><span>API and workers</span></div><span class=\"cloud-flow-arrow\">&rarr;</span><div class=\"cloud-flow-step\"><strong>Data</strong><span>Database and storage</span></div></div>"
+      },
+      {
+        "id": "cloud-benefits",
+        "title": "Why Use the Cloud?",
+        "content": "<p>Cloud platforms help teams launch quickly, scale resources, automate deployments, back up data, and access managed services. They also support multiple regions, observability, identity management, and disaster recovery.</p><p>Cloud is not automatically cheaper or safer. Teams still need access controls, encryption, backups, cost monitoring, logging, and a clear architecture.</p>"
+      },
+      {
+        "id": "cloud-tools",
+        "title": "Common Cloud Tools",
+        "content": "<p>Popular cloud providers include AWS, Microsoft Azure, and Google Cloud. Common building blocks include virtual machines, containers, Kubernetes, object storage, managed SQL databases, queues, serverless functions, identity services, monitoring, and infrastructure-as-code tools such as Terraform.</p>"
+      }
+    ]
+  },
+  {
+    "id": "b9",
+    "title": "JWT Authentication Explained",
+    "description": "A structured guide to JSON Web Tokens, their three parts, signature creation, verification, and secure usage.",
+    "date": "2026-09-24",
+    "sections": [
+      {
+        "id": "jwt-what",
+        "title": "What Is a JWT?",
+        "content": "<p>A JSON Web Token, or JWT, is a compact token used to transfer claims between a client and a server. After a user signs in, the server can issue a token that the client sends with later requests.</p><p>A JWT is usually written as three Base64URL-encoded parts separated by dots:</p><pre><code>header.payload.signature</code></pre><p>The token is encoded for transport, not encrypted by default. Anyone holding the token may be able to read the header and payload, so never place passwords or private secrets inside them.</p>"
+      },
+      {
+        "id": "jwt-parts",
+        "title": "The Three Parts",
+        "content": "<p>A JWT has three parts. Each part has a different responsibility:</p><div class=\"jwt-diagram\" role=\"img\" aria-label=\"JWT header payload and signature combine into a token\"><div class=\"jwt-part\"><strong>Header</strong><span><code>{ typ: 'JWT', alg: 'HS256' }</code><br>Token type and algorithm</span></div><span class=\"jwt-plus\">+</span><div class=\"jwt-part jwt-part-payload\"><strong>Payload</strong><span><code>sub</code>: user ID<br><code>email</code>: user email<br><code>role</code>: permissions<br><code>iss</code>: issuer<br><code>exp</code>: expiry</span></div><span class=\"jwt-plus\">+</span><div class=\"jwt-part\"><strong>Signature</strong><span><code>HMAC(header.payload, secret)</code><br>Integrity proof</span></div><div class=\"jwt-result\">base64url(header).base64url(payload).signature</div></div><p>The header tells the verifier how the token was signed. The payload carries claims, not secrets. The signature binds the encoded header and payload together.</p>"
+      },
+      {
+        "id": "jwt-signature",
+        "title": "How the Signature Is Made",
+        "content": "<p>The signature is created by signing the encoded header and payload with a secret or private key. The algorithm is named in the header, for example <code>{ &quot;alg&quot;: &quot;RS256&quot;, &quot;typ&quot;: &quot;JWT&quot; }</code>.</p><pre><code>encodedHeader = base64url(header)<br>encodedPayload = base64url(payload)<br>content = encodedHeader + '.' + encodedPayload<br>signature = sign(content, secretOrPrivateKey)<br>token = content + '.' + base64url(signature)</code></pre><h3>Common Signature Algorithms</h3><ul><li><strong>HS256, HS384, HS512:</strong> HMAC with SHA-256, SHA-384, or SHA-512. The same shared secret signs and verifies. It is simple and fast for one trusted backend, but every verifier must know the signing secret.</li><li><strong>RS256, RS384, RS512:</strong> RSA signatures. The private key signs and the public key verifies. This is useful when many APIs need to verify tokens without receiving the private signing key.</li><li><strong>ES256, ES384, ES512:</strong> ECDSA signatures using elliptic curves. They provide strong security with smaller keys and signatures, but key handling and library compatibility require care.</li><li><strong>EdDSA:</strong> modern Ed25519-style public-key signatures. It offers strong performance and simple key handling when the selected libraries and identity provider support it.</li></ul><p>The signature does not hide the payload. It detects tampering because changing the header or payload produces a different signature. The server must allow only the expected algorithm and must never trust an algorithm value blindly from the token.</p>"
+      },
+      {
+        "id": "jwt-flow",
+        "title": "Login and Request Flow",
+        "content": "<p>The usual authentication flow connects login, token creation, token storage, protected requests, and verification:</p><div class=\"jwt-flow-diagram\" role=\"img\" aria-label=\"JWT authentication flow from login to protected API response\"><div class=\"jwt-flow-step\"><strong>1. Login</strong><span>Credentials sent</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>2. Issue</strong><span>Server signs JWT</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>3. Store</strong><span>Cookie or client memory</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>4. Send</strong><span>Request carries token</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>5. Verify</strong><span>Signature and claims</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>6. Authorize</strong><span>Allow or reject</span></div></div><pre><code>Authorization: Bearer &lt;token&gt;</code></pre><p>The API verifies the signature, checks expiration and issuer claims, then checks the user's permissions before returning protected data.</p>"
+      },
+      {
+        "id": "jwt-claims",
+        "title": "Claims and Expiration",
+        "content": "<p>Claims are fields stored in the payload. Common registered claims include:</p><ul><li><code>sub</code>: the subject, often the user ID.</li><li><code>iss</code>: the service that issued the token.</li><li><code>aud</code>: the intended audience.</li><li><code>iat</code>: the time the token was issued.</li><li><code>exp</code>: the expiration time.</li><li><code>nbf</code>: the time before which the token is not valid.</li></ul><p>Short-lived access tokens reduce risk. Refresh tokens can be used to obtain new access tokens, but they require stronger storage and revocation controls.</p>"
+      },
+      {
+        "id": "jwt-security",
+        "title": "Security Rules",
+        "content": "<ul><li>Use HTTPS so tokens cannot be intercepted in transit.</li><li>Never store passwords or sensitive secrets in the payload.</li><li>Validate the expected algorithm instead of trusting the token header.</li><li>Verify issuer, audience, expiration, and required claims.</li><li>Use strong secrets for HMAC or protect private keys for RSA and ECDSA.</li><li>Prefer secure, HttpOnly cookies when they fit the application architecture.</li><li>Plan token revocation for logout, password changes, and compromised accounts.</li></ul><p>JWT provides signed claims, not automatic authorization. The server must still check whether the user is allowed to perform the requested action.</p>"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "jwt-basics-tab",
+        "title": "JWT Basics",
+        "description": "Understand what JWT is, why it is used, and what problem signed tokens solve.",
+        "articleTitle": "JWT Basics",
+        "sections": [
+          {
+            "id": "jwt-basics-purpose",
+            "title": "What JWT Solves",
+            "content": "<p>JWT lets a server issue a portable, signed identity claim after login. The client can send that claim with later requests, and the API can validate it without storing a session record for every request.</p><p>JWT is useful for APIs, single-page applications, mobile clients, service-to-service calls, and distributed systems.</p>"
+          },
+          {
+            "id": "jwt-basics-not-encryption",
+            "title": "Signed Is Not Encrypted",
+            "content": "<p>JWT payloads are encoded so they can travel safely as text, but encoding does not make them secret. A user can decode the header and payload. The signature protects integrity, while HTTPS and encryption protect confidentiality.</p><ul><li>Do not store passwords in a JWT.</li><li>Do not store private keys or sensitive personal data in a JWT.</li><li>Keep claims small and relevant.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "jwt-structure-tab",
+        "title": "Token Structure",
+        "description": "See how the header, payload, and signature are encoded and combined into one token.",
+        "articleTitle": "JWT Token Structure",
+        "sections": [
+          {
+            "id": "jwt-structure-parts",
+            "title": "Header, Payload, Signature",
+            "content": "<div class=\"jwt-diagram\" role=\"img\" aria-label=\"JWT header payload and signature combine into a token\"><div class=\"jwt-part\"><strong>Header</strong><span>JSON and algorithm</span></div><span class=\"jwt-plus\">+</span><div class=\"jwt-part\"><strong>Payload</strong><span>Claims and expiration</span></div><span class=\"jwt-plus\">+</span><div class=\"jwt-part\"><strong>Signature</strong><span>Integrity proof</span></div><div class=\"jwt-result\">base64url(header).base64url(payload).signature</div></div><p>The three encoded parts are joined with two dots. The server signs the first two parts together, so changing either one invalidates the signature.</p>"
+          },
+          {
+            "id": "jwt-structure-signing",
+            "title": "Signature Formula",
+            "content": "<p>With HMAC and a shared secret, the signature can be represented as:</p><pre><code>content = encodedHeader + '.' + encodedPayload<br>signature = HMAC_SHA256(content, secret)<br>token = content + '.' + encodedSignature</code></pre><p>RSA and ECDSA use a private key to sign and a public key to verify, which is useful when many services need to verify tokens without receiving the signing secret.</p>"
+          }
+        ]
+      },
+      {
+        "id": "jwt-auth-flow-tab",
+        "title": "Auth Flow",
+        "description": "Follow login, token creation, protected requests, verification, and expiration from start to finish.",
+        "articleTitle": "JWT Authentication Flow",
+        "sections": [
+          {
+            "id": "jwt-auth-sequence",
+            "title": "Request Sequence",
+            "content": "<div class=\"jwt-flow-diagram\" role=\"img\" aria-label=\"JWT authentication flow from login to protected API response\"><div class=\"jwt-flow-step\"><strong>1. Login</strong><span>Credentials sent</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>2. Issue</strong><span>JWT signed</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>3. Send</strong><span>Bearer header</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>4. Verify</strong><span>Claims checked</span></div><span class=\"jwt-flow-arrow\">&rarr;</span><div class=\"jwt-flow-step\"><strong>5. Response</strong><span>Allow or reject</span></div></div>"
+          },
+          {
+            "id": "jwt-auth-example",
+            "title": "Protected Request Example",
+            "content": "<p>The client sends the access token to a protected endpoint:</p><pre><code>fetch('/api/profile', {<br>&nbsp;&nbsp;headers: {<br>&nbsp;&nbsp;&nbsp;&nbsp;Authorization: `Bearer ${token}`<br>&nbsp;&nbsp;}<br>});</code></pre><p>The API verifies the signature and checks <code>exp</code>, <code>iss</code>, <code>aud</code>, and the user's permissions before returning data.</p>"
+          },
+          {
+            "id": "jwt-auth-expiration",
+            "title": "Expiration and Refresh",
+            "content": "<p>Access tokens should usually be short-lived. A refresh token can be exchanged for a new access token, but it needs stronger protection, rotation, revocation, and reuse detection.</p>"
+          },
+          {
+            "id": "jwt-storage-options",
+            "title": "Where Should the Token Be Stored?",
+            "content": "<p>The storage choice depends on the threat model and application architecture:</p><div class=\"jwt-storage-grid\"><div class=\"jwt-storage-card\"><strong>HttpOnly Cookie</strong><span>Best default for browser sessions. JavaScript cannot read an HttpOnly cookie, which reduces token theft through XSS. Add Secure, SameSite, CSRF protection, and an appropriate domain/path.</span></div><div class=\"jwt-storage-card\"><strong>Memory</strong><span>Good for short-lived access tokens in a single-page app. A page refresh clears it, which reduces persistence but requires a refresh flow.</span></div><div class=\"jwt-storage-card\"><strong>localStorage</strong><span>Survives browser restarts and is easy to use, but JavaScript can read it. Avoid it for high-risk tokens when XSS exposure is a concern.</span></div><div class=\"jwt-storage-card\"><strong>sessionStorage</strong><span>Clears when the tab closes and is isolated per tab, but JavaScript can still read it and XSS can expose the token.</span></div><div class=\"jwt-storage-card\"><strong>Authorization Header</strong><span>The transport method, not permanent storage. Send <code>Authorization: Bearer token</code> when calling an API from memory or another secure client.</span></div></div>"
+          },
+          {
+            "id": "jwt-storage-choice",
+            "title": "Choosing the Option",
+            "content": "<ul><li><strong>Browser app with a server session:</strong> prefer a Secure, HttpOnly, SameSite cookie.</li><li><strong>SPA with a separate API:</strong> keep a short-lived access token in memory and protect the refresh flow.</li><li><strong>Mobile app:</strong> use the platform's secure keychain or keystore, not plain storage.</li><li><strong>Service-to-service API:</strong> use an Authorization header with short-lived credentials and secret management.</li><li><strong>Simple low-risk prototype:</strong> localStorage may be convenient, but document its XSS tradeoff before production.</li></ul><p>No storage option makes a token automatically safe. HTTPS, short expiration, secure headers, validation, and revocation still matter.</p>"
+          }
+        ]
+      },
+      {
+        "id": "jwt-security-tab",
+        "title": "Security and Code",
+        "description": "Review secure token handling and see a backend signing and verification example.",
+        "articleTitle": "JWT Security and Implementation",
+        "sections": [
+          {
+            "id": "jwt-server-example",
+            "title": "Server-Side Example",
+            "content": "<p>A backend library handles encoding, signing, and verification. The application still decides which claims to include and how to authorize the user.</p><pre><code>const token = jwt.sign(<br>&nbsp;&nbsp;{ sub: user.id, role: user.role },<br>&nbsp;&nbsp;process.env.JWT_SECRET,<br>&nbsp;&nbsp;{ expiresIn: '15m', issuer: 'my-api' }<br>);<br><br>const claims = jwt.verify(token, process.env.JWT_SECRET, {<br>&nbsp;&nbsp;issuer: 'my-api'<br>});</code></pre>"
+          },
+          {
+            "id": "jwt-security-checklist",
+            "title": "Security Checklist",
+            "content": "<ul class=\"blog-checklist\"><li><label><input type=\"checkbox\"> Use HTTPS in every environment that handles real credentials</label></li><li><label><input type=\"checkbox\"> Validate the expected signing algorithm</label></li><li><label><input type=\"checkbox\"> Check issuer, audience, expiration, and required claims</label></li><li><label><input type=\"checkbox\"> Keep secrets outside source code</label></li><li><label><input type=\"checkbox\"> Plan logout and compromised-token revocation</label></li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "jwt-django-tab",
+        "title": "Django JWT",
+        "description": "Set up JWT authentication in Django REST Framework with SimpleJWT and protect an API route.",
+        "articleTitle": "JWT with Django REST Framework",
+        "sections": [
+          {
+            "id": "django-jwt-install",
+            "title": "Backend: Install and Configure",
+            "content": "<p>SimpleJWT adds access and refresh token endpoints to Django REST Framework.</p><pre><code>pip install djangorestframework djangorestframework-simplejwt</code></pre><p>Add REST Framework and configure authentication:</p><pre><code>REST_FRAMEWORK = {<br>&nbsp;&nbsp;'DEFAULT_AUTHENTICATION_CLASSES': (<br>&nbsp;&nbsp;&nbsp;&nbsp;'rest_framework_simplejwt.authentication.JWTAuthentication',<br>&nbsp;&nbsp;)<br>}</code></pre>"
+          },
+          {
+            "id": "django-jwt-routes",
+            "title": "Backend: Token Routes",
+            "content": "<p>Expose login and refresh endpoints, then require authentication on protected views:</p><pre><code>from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView<br><br>urlpatterns = [<br>&nbsp;&nbsp;path('api/token/', TokenObtainPairView.as_view()),<br>&nbsp;&nbsp;path('api/token/refresh/', TokenRefreshView.as_view())<br>]</code></pre><pre><code>from rest_framework.permissions import IsAuthenticated<br><br>class ProfileView(APIView):<br>&nbsp;&nbsp;permission_classes = [IsAuthenticated]<br><br>&nbsp;&nbsp;def get(self, request):<br>&nbsp;&nbsp;&nbsp;&nbsp;return Response({'user': request.user.username})</code></pre>"
+          },
+          {
+            "id": "django-jwt-frontend",
+            "title": "Frontend: Login and Request",
+            "content": "<p>The frontend obtains tokens, then sends the access token to protected endpoints:</p><pre><code>const response = await fetch('/api/token/', {<br>&nbsp;&nbsp;method: 'POST',<br>&nbsp;&nbsp;headers: { 'Content-Type': 'application/json' },<br>&nbsp;&nbsp;body: JSON.stringify({ username, password })<br>});<br><br>const { access } = await response.json();<br>await fetch('/api/profile/', {<br>&nbsp;&nbsp;headers: { Authorization: `Bearer ${access}` }<br>});</code></pre><p>Use a refresh strategy and avoid exposing long-lived tokens to unnecessary browser code.</p>"
+          }
+        ]
+      },
+      {
+        "id": "jwt-spring-tab",
+        "title": "Spring Boot JWT",
+        "description": "Configure Spring Security as a JWT resource server and protect Java API endpoints.",
+        "articleTitle": "JWT with Spring Boot",
+        "sections": [
+          {
+            "id": "spring-jwt-dependency",
+            "title": "Backend: Dependency and Configuration",
+            "content": "<p>Spring Security can validate JWTs issued by an identity provider or authorization server.</p><pre><code>&lt;dependency&gt;<br>&nbsp;&nbsp;&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>&nbsp;&nbsp;&lt;artifactId&gt;spring-boot-starter-oauth2-resource-server&lt;/artifactId&gt;<br>&lt;/dependency&gt;</code></pre><pre><code>@Bean<br>SecurityFilterChain security(HttpSecurity http) throws Exception {<br>&nbsp;&nbsp;http.oauth2ResourceServer(oauth -&gt; oauth.jwt());<br>&nbsp;&nbsp;return http.build();<br>}</code></pre>"
+          },
+          {
+            "id": "spring-jwt-routes",
+            "title": "Backend: Authorization Rules",
+            "content": "<p>Protect routes by requiring authentication or specific authorities:</p><pre><code>@Bean<br>SecurityFilterChain security(HttpSecurity http) throws Exception {<br>&nbsp;&nbsp;http.authorizeHttpRequests(auth -&gt; auth<br>&nbsp;&nbsp;&nbsp;&nbsp;.requestMatchers('/public/**').permitAll()<br>&nbsp;&nbsp;&nbsp;&nbsp;.requestMatchers('/admin/**').hasRole('ADMIN')<br>&nbsp;&nbsp;&nbsp;&nbsp;.anyRequest().authenticated()<br>&nbsp;&nbsp;);<br>&nbsp;&nbsp;return http.build();<br>}</code></pre>"
+          },
+          {
+            "id": "spring-jwt-frontend",
+            "title": "Frontend: Bearer Request",
+            "content": "<p>A frontend or service sends the access token in the standard Authorization header:</p><pre><code>fetch('/api/profile', {<br>&nbsp;&nbsp;headers: {<br>&nbsp;&nbsp;&nbsp;&nbsp;Authorization: `Bearer ${accessToken}`<br>&nbsp;&nbsp;}<br>});</code></pre><p>Spring validates the signature and claims before the controller receives the request.</p>"
+          }
+        ]
       }
     ]
   }
