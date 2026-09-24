@@ -302,33 +302,127 @@ This makes the portfolio easy to extend without breaking the layout.
 
 ---
 
-## Deployment
+## Deploying to GitHub Pages
 
-This project is built with Vite, so deployment is straightforward.
+This project is a Vite + React app using hash-based routing, which works cleanly with GitHub Pages without 404 redirect tricks.
 
-### Option 1: Deploy to Vercel
-- Push to GitHub
-- Import the repo in Vercel
-- Use the default Vite settings
-- Deploy
+### 1. Set the correct base path
 
-### Option 2: Deploy to Netlify
-- Push to GitHub
-- Import project in Netlify
-- Set build command to:
+In `vite.config.js`, set `base` to match your repository name exactly. This project currently uses `/portfolio/`:
+
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+  base: "/portfolio/"
+});
+```
+
+For another repository, replace `/portfolio/` with `/<your-repo-name>/`.
+
+If your repository is named `your-username.github.io` and is a user or organization root site, use `base: "/"` instead.
+
+### 2. Avoid leading slashes on public assets
+
+Files referenced from the `public/` folder, including images, PDFs, certificates, and favicons, must use relative paths when `base` is set:
+
+```jsx
+// Wrong
+<a href="/resume.pdf" download>
+
+// Right
+<a href="resume.pdf" download>
+```
+
+Always confirm that the referenced file exists under `public/` and that its filename casing matches exactly. GitHub Pages is case-sensitive, unlike Windows.
+
+### 3. Install the deploy tool
+
+```bash
+npm install --save-dev gh-pages
+```
+
+### 4. Add deploy scripts
+
+Add the `deploy` script to `package.json`:
+
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && gh-pages -d dist"
+  }
+}
+```
+
+Keep any other existing scripts in `package.json` if they are present.
+
+### 5. Push your source code
+
+Replace the repository URL with your own:
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M master
+git remote add origin https://github.com/your-username/your-repo-name.git
+git push -u origin master
+```
+
+### 6. Deploy
+
+```bash
+npm run deploy
+```
+
+This builds the app into `dist/` and pushes its contents to a `gh-pages` branch automatically.
+
+### 7. Enable GitHub Pages
+
+1. Open your repository and go to **Settings** → **Pages**.
+2. Under **Build and deployment → Source**, select **Deploy from a branch**.
+3. Set **Branch** to `gh-pages` and the folder to `/ (root)`.
+4. Click **Save**.
+
+### 8. Visit the live site
+
+The first deploy can take one or two minutes to go live. Your URL will usually be:
+
+```text
+https://your-username.github.io/your-repo-name/
+```
+
+### Updating the live site later
+
+```bash
+git add .
+git commit -m "Update portfolio"
+git push
+npm run deploy
+```
+
+`git push` backs up your source code on `master`. `npm run deploy` updates the live site through the `gh-pages` branch. Both commands are needed.
+
+### Troubleshooting
+
+- **Blank white page or a 404 for `/src/main.jsx`**: GitHub Pages is serving the wrong branch. Recheck the Pages settings and select `gh-pages`, not `master`.
+- **Images, PDFs, or certificates are missing**: remove the leading `/` from any `public/` asset path and confirm the file exists with matching case.
+- **Changes are not showing**: hard refresh with `Ctrl+Shift+R` or test in an incognito window. GitHub Pages can cache briefly after a redeploy.
+
+### Other hosting options
+
+The app can also be deployed to Vercel or Netlify using:
 
 ```bash
 npm run build
 ```
 
-- Set publish directory to:
-
-```bash
-dist
-```
-
-### Option 3: GitHub Pages
-You can also deploy to GitHub Pages by configuring Vite's `base` option and pushing the built `dist` folder.
+For Netlify, use `dist` as the publish directory. Vercel detects the Vite build settings automatically in most cases.
 
 ---
 
