@@ -33,5 +33,40 @@
         "content": "Suggested references and tools.\n\nYou can include checklists, links, or short supporting details here without them becoming part of the main article structure."
       }
     ]
+  },
+  {
+    "id": "b2",
+    "title": "Deploying a Vite Portfolio to GitHub Pages",
+    "description": "A practical guide to running, building, and deploying this React portfolio with GitHub Pages.",
+    "date": "2026-09-24",
+    "sections": [
+      {
+        "id": "commands",
+        "title": "The npm Commands",
+        "content": "npm run dev starts Vite's local development server. Use it while writing code because it provides fast hot reloads and lets you test the portfolio at a local URL. It is intended for development and is not the command that publishes the site.\n\nnpm run build creates the optimized production files in the dist folder. Use it to check that the app compiles successfully and to prepare the files that a hosting service will publish.\n\nnpm run preview serves the finished dist folder locally. Use it after npm run build when you want to test the production version before deploying it.\n\nnpm run deploy runs npm run build and then uses gh-pages to push dist to the gh-pages branch. This is the command that updates the live GitHub Pages site."
+      },
+      {
+        "id": "github-pages",
+        "title": "GitHub Pages Deployment",
+        "content": "Before deploying, make sure vite.config.js uses the repository base path, such as /portfolio/. Public assets should use relative paths like resume.pdf and certifications/example.jpg so they work under that base path.\n\nPush the source code to GitHub, then run npm run deploy. The gh-pages package publishes the generated dist folder to the gh-pages branch. In the repository settings, open Pages and choose Deploy from a branch, select gh-pages, and use the root folder.\n\nThe live URL is usually https://your-username.github.io/your-repository/. The first deployment can take a short time to become available."
+      },
+      {
+        "id": "git-workflow",
+        "title": "Updating the Site",
+        "content": "After making changes, run npm run build to catch production errors. Commit and push the source changes with git add ., git commit, and git push. Then run npm run deploy to publish the new dist output.\n\nThe normal update flow is: edit the site, test with npm run dev, verify with npm run build, push the source code, and deploy with npm run deploy."
+      }
+    ],
+    "tabs": [
+      {
+        "id": "quick-reference",
+        "title": "Quick Reference",
+        "content": "npm run dev = local development server\n\nnpm run build = production build in dist\n\nnpm run preview = preview the production build locally\n\nnpm run deploy = build and publish dist to GitHub Pages"
+      },
+      {
+        "id": "git-checklist",
+        "title": "Git Checklist",
+        "content": "1. Commit and push source changes.\n\n2. Confirm the Vite base path matches the repository name.\n\n3. Run npm run deploy.\n\n4. Confirm GitHub Pages uses the gh-pages branch."
+      }
+    ]
   }
 ]
